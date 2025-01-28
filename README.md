@@ -1,4 +1,4 @@
-# cdk-iam-policy-builder-helper-construct
+# cdk-iam-policy-builder-helper
 
 The AWS CDK allows you to define your cloud infrastructure using familiar programming languages, and this project
 leverages that! Here are some examples of how to use our Actions and Managed Policies helper properties through
