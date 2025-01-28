@@ -2,7 +2,7 @@ import { awscdk } from 'projen';
 import { NpmAccess } from 'projen/lib/javascript';
 
 const cdkVersion = '2.150.0';
-const minNodeVersion = '20.5.0';
+const minNodeVersion = '20.9.0';
 const jsiiVersion = '~5.4.0';
 const constructsVersion = '10.3.5';
 const projenVersion = '0.91.1';
