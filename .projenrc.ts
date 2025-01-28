@@ -5,6 +5,7 @@ const cdkVersion = '2.150.0';
 const minNodeVersion = '20.5.0';
 const jsiiVersion = '~5.4.0';
 const constructsVersion = '10.3.5';
+const projenVersion = '0.91.1';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Jayson Rawlins',
   authorAddress: 'JaysonJ.Rawlins@gmail.com',
@@ -17,6 +18,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   ],
   cdkVersion: cdkVersion,
   constructsVersion: constructsVersion,
+  projenVersion: projenVersion,
   projenDevDependency: false,
   defaultReleaseBranch: 'main',
   minNodeVersion: minNodeVersion,
