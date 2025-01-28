@@ -1,10 +1,10 @@
 import { awscdk } from 'projen';
 import { NpmAccess } from 'projen/lib/javascript';
 
-const cdkVersion = '2.80.0';
-const constructsVersion = '10.3.0';
-const minNodeVersion = '18.0.0';
-const jsiiVersion = '~5.0.0';
+const cdkVersion = '2.150.0';
+const minNodeVersion = '20.5.0';
+const jsiiVersion = '~5.4.0';
+const constructsVersion = '10.3.5';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Jayson Rawlins',
   authorAddress: 'JaysonJ.Rawlins@gmail.com',
@@ -24,7 +24,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: '@jjrawlins/cdk-iam-policy-builder-helper',
   npmAccess: NpmAccess.PUBLIC,
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/jjrawlins/cdk-iam-policy-builder-helper-construct.git',
+  repositoryUrl: 'https://github.com/jjrawlins/cdk-iam-policy-builder-helper.git',
   githubOptions: {
     mergify: false,
     pullRequestLint: false,
@@ -44,6 +44,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   ],
   deps: [
     'projen',
+    'constructs',
+    '@aws-sdk/client-iam',
   ],
   devDeps: [
     '@types/axios',
@@ -57,7 +59,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   eslint: true,
 });
 
-// Add 'download-policies' task to the 'prebuild' phase of the build process
+// Add the 'download-policies' task to the 'prebuild' phase of the build process
 project.preCompileTask.exec(`ts-node ./src/bin/download-actions-json.ts &&
 ts-node ./src/bin/download-managed-policies-json.ts &&
 ts-node ./src/bin/create-actions-json.ts`);

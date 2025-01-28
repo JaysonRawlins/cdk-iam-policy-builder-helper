@@ -3,7 +3,7 @@
   "description": "A CDK construct that helps build IAM policies using the AWS IAM Policy Builder dump. Normally it is better to use cdk-iam-floyd, However, I found that cdk-iam-floyd currently is not jsii compliant so I wasn't able to use it in my jsii compliant projects in languages that are not typescript or python.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jjrawlins/cdk-iam-policy-builder-helper-construct.git"
+    "url": "https://github.com/jjrawlins/cdk-iam-policy-builder-helper.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -38,33 +38,33 @@
     "@aws-sdk/types": "^3.535.0",
     "@types/axios": "^0.14.0",
     "@types/jest": "^29.5.12",
-    "@types/node": "^18",
+    "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "aws-cdk-lib": "2.80.0",
-    "constructs": "10.3.0",
+    "aws-cdk-lib": "2.150.0",
     "eslint": "^8",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "jest": "^29.7.0",
     "jest-junit": "^15",
-    "jsii": "~5.0.0",
+    "jsii": "~5.4.0",
     "jsii-diff": "^1.98.0",
     "jsii-docgen": "^10.4.3",
     "jsii-pacmak": "^1.98.0",
-    "jsii-rosetta": "~5.0.0",
+    "jsii-rosetta": "~5.4.0",
     "standard-version": "^9",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.80.0",
-    "constructs": "^10.3.0"
+    "aws-cdk-lib": "^2.150.0",
+    "constructs": "^10.3.5"
   },
   "dependencies": {
     "@aws-sdk/client-iam": "^3.565.0",
-    "axios": "^1.6.8",
+    "axios": "1.7.4",
+    "constructs": "^10.4.2",
     "jsonc-parser": "^3.2.1",
     "projen": "^0.81.5"
   },
@@ -80,7 +80,7 @@
     "iam-policy"
   ],
   "engines": {
-    "node": ">= 18.0.0"
+    "node": ">= 20.5.0"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
