@@ -71,9 +71,4 @@ project.github!.actions.set('actions/setup-node', 'actions/setup-node@v4');
 project.github!.actions.set('actions/upload-artifact', 'actions/upload-artifact@v4');
 project.github!.actions.set('actions/download-artifact', 'actions/download-artifact@v4');
 
-const releaseWorkflow = project.github!.tryFindWorkflow('release');
-if (releaseWorkflow) {
-  releaseWorkflow.file!.addOverride('jobs.release.steps.8.with.include-hidden-files', true);
-}
-
 project.synth();
