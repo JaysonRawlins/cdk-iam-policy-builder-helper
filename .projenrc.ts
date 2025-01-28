@@ -33,8 +33,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   depsUpgrade: false,
   publishToPypi: {
-    distName: 'jjrawlins.cdk-iam-policy-builder-helper',
-    module: 'jjrawlins.cdk_iam_policy_builder_helper',
+    distName: 'jjrawlins_cdk-iam-policy-builder-helper',
+    module: 'jjrawlins_cdk_iam_policy_builder_helper',
   },
   publishToGo: {
     moduleName: 'github.com/jjrawlins/cdk-iam-policy-builder-helper-construct',
