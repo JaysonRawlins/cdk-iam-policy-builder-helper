@@ -66,9 +66,4 @@ project.preCompileTask.exec(`ts-node ./src/bin/download-actions-json.ts &&
 ts-node ./src/bin/download-managed-policies-json.ts &&
 ts-node ./src/bin/create-actions-json.ts`);
 
-project.github!.actions.set('actions/checkout', 'actions/checkout@v4');
-project.github!.actions.set('actions/setup-node', 'actions/setup-node@v4');
-project.github!.actions.set('actions/upload-artifact', 'actions/upload-artifact@v4');
-project.github!.actions.set('actions/download-artifact', 'actions/download-artifact@v4');
-
 project.synth();
