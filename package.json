@@ -26,6 +26,7 @@
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
+    "update-policies": "npx projen update-policies",
     "watch": "npx projen watch",
     "projen": "npx projen"
   },

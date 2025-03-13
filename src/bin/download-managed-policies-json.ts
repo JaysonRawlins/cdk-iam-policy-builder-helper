@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { IAMClient, paginateListPolicies, PolicyScopeType } from '@aws-sdk/client-iam';
 
 const region = process.env.region || 'us-east-2';
@@ -12,7 +11,7 @@ interface CustomPolicy {
 
 const writeToFileAsTsObject = (data: any, filename: string) => {
   try {
-    // Convert object to string
+    // Convert an object to string
     const dataAsString = JSON.stringify(data, null, 2);
 
     // Format data as TypeScript export

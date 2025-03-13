@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as readline from 'readline';
-// eslint-disable-next-line import/no-extraneous-dependencies
 
 // Define the output object
 let output: { [key: string]: { [key: string]: string } } = {};

@@ -2659,10 +2659,6 @@ export const ManagedPolicies = {
     PolicyName: 'AWSCompromisedKeyQuarantine',
     Arn: 'arn:aws:iam::aws:policy/AWSCompromisedKeyQuarantine',
   },
-  'ServerMigration_ServiceRole': {
-    PolicyName: 'ServerMigration_ServiceRole',
-    Arn: 'arn:aws:iam::aws:policy/service-role/ServerMigration_ServiceRole',
-  },
   'AmazonEKSVPCResourceController': {
     PolicyName: 'AmazonEKSVPCResourceController',
     Arn: 'arn:aws:iam::aws:policy/AmazonEKSVPCResourceController',
@@ -3555,14 +3551,6 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonGrafanaRedshiftAccess',
     Arn: 'arn:aws:iam::aws:policy/service-role/AmazonGrafanaRedshiftAccess',
   },
-  'AWSIotRoboRunnerReadOnly': {
-    PolicyName: 'AWSIotRoboRunnerReadOnly',
-    Arn: 'arn:aws:iam::aws:policy/AWSIotRoboRunnerReadOnly',
-  },
-  'AWSIotRoboRunnerFullAccess': {
-    PolicyName: 'AWSIotRoboRunnerFullAccess',
-    Arn: 'arn:aws:iam::aws:policy/AWSIotRoboRunnerFullAccess',
-  },
   'AWSMigrationHubRefactorSpacesServiceRolePolicy': {
     PolicyName: 'AWSMigrationHubRefactorSpacesServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSMigrationHubRefactorSpacesServiceRolePolicy',
@@ -4155,10 +4143,6 @@ export const ManagedPolicies = {
     PolicyName: 'AWSPrivateCAAuditor',
     Arn: 'arn:aws:iam::aws:policy/AWSPrivateCAAuditor',
   },
-  'AWSIotRoboRunnerServiceRolePolicy': {
-    PolicyName: 'AWSIotRoboRunnerServiceRolePolicy',
-    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSIotRoboRunnerServiceRolePolicy',
-  },
   'AmazonOmicsFullAccess': {
     PolicyName: 'AmazonOmicsFullAccess',
     Arn: 'arn:aws:iam::aws:policy/AmazonOmicsFullAccess',
@@ -4698,5 +4682,661 @@ export const ManagedPolicies = {
   'AmazonSageMakerCanvasBedrockAccess': {
     PolicyName: 'AmazonSageMakerCanvasBedrockAccess',
     Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerCanvasBedrockAccess',
+  },
+  'AWSServiceRoleForPrivateMarketplaceAdminPolicy': {
+    PolicyName: 'AWSServiceRoleForPrivateMarketplaceAdminPolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSServiceRoleForPrivateMarketplaceAdminPolicy',
+  },
+  'AmazonRDSCustomInstanceProfileRolePolicy': {
+    PolicyName: 'AmazonRDSCustomInstanceProfileRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonRDSCustomInstanceProfileRolePolicy',
+  },
+  'AWSMarketplaceResaleAuthorizationServiceRolePolicy': {
+    PolicyName: 'AWSMarketplaceResaleAuthorizationServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSMarketplaceResaleAuthorizationServiceRolePolicy',
+  },
+  'AmazonTimestreamInfluxDBServiceRolePolicy': {
+    PolicyName: 'AmazonTimestreamInfluxDBServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonTimestreamInfluxDBServiceRolePolicy',
+  },
+  'AmazonTimestreamInfluxDBFullAccess': {
+    PolicyName: 'AmazonTimestreamInfluxDBFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonTimestreamInfluxDBFullAccess',
+  },
+  'AWSEC2VssSnapshotPolicy': {
+    PolicyName: 'AWSEC2VssSnapshotPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSEC2VssSnapshotPolicy',
+  },
+  'AWSQuickSightAssetBundleExportPolicy': {
+    PolicyName: 'AWSQuickSightAssetBundleExportPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSightAssetBundleExportPolicy',
+  },
+  'AWSQuickSightAssetBundleImportPolicy': {
+    PolicyName: 'AWSQuickSightAssetBundleImportPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSightAssetBundleImportPolicy',
+  },
+  'AWSDeadlineCloud-UserAccessFarms': {
+    PolicyName: 'AWSDeadlineCloud-UserAccessFarms',
+    Arn: 'arn:aws:iam::aws:policy/AWSDeadlineCloud-UserAccessFarms',
+  },
+  'AWSDeadlineCloud-UserAccessFleets': {
+    PolicyName: 'AWSDeadlineCloud-UserAccessFleets',
+    Arn: 'arn:aws:iam::aws:policy/AWSDeadlineCloud-UserAccessFleets',
+  },
+  'AWSDeadlineCloud-UserAccessJobs': {
+    PolicyName: 'AWSDeadlineCloud-UserAccessJobs',
+    Arn: 'arn:aws:iam::aws:policy/AWSDeadlineCloud-UserAccessJobs',
+  },
+  'AWSDeadlineCloud-UserAccessQueues': {
+    PolicyName: 'AWSDeadlineCloud-UserAccessQueues',
+    Arn: 'arn:aws:iam::aws:policy/AWSDeadlineCloud-UserAccessQueues',
+  },
+  'AWSDeadlineCloud-FleetWorker': {
+    PolicyName: 'AWSDeadlineCloud-FleetWorker',
+    Arn: 'arn:aws:iam::aws:policy/AWSDeadlineCloud-FleetWorker',
+  },
+  'AWSDeadlineCloud-WorkerHost': {
+    PolicyName: 'AWSDeadlineCloud-WorkerHost',
+    Arn: 'arn:aws:iam::aws:policy/AWSDeadlineCloud-WorkerHost',
+  },
+  'SplitCostAllocationDataServiceRolePolicy': {
+    PolicyName: 'SplitCostAllocationDataServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/SplitCostAllocationDataServiceRolePolicy',
+  },
+  'AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary': {
+    PolicyName: 'AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/AmazonDataZoneSageMakerEnvironmentRolePermissionsBoundary',
+  },
+  'AmazonDataZoneSageMakerProvisioningRolePolicy': {
+    PolicyName: 'AmazonDataZoneSageMakerProvisioningRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonDataZoneSageMakerProvisioningRolePolicy',
+  },
+  'AmazonDataZoneSageMakerManageAccessRolePolicy': {
+    PolicyName: 'AmazonDataZoneSageMakerManageAccessRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonDataZoneSageMakerManageAccessRolePolicy',
+  },
+  'AWSServiceRoleForAmazonQDeveloper': {
+    PolicyName: 'AWSServiceRoleForAmazonQDeveloper',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSServiceRoleForAmazonQDeveloper',
+  },
+  'AWSServiceRoleForUserSubscriptions': {
+    PolicyName: 'AWSServiceRoleForUserSubscriptions',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSServiceRoleForUserSubscriptions',
+  },
+  'QBusinessServiceRolePolicy': {
+    PolicyName: 'QBusinessServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/QBusinessServiceRolePolicy',
+  },
+  'AmazonRoute53ProfilesReadOnlyAccess': {
+    PolicyName: 'AmazonRoute53ProfilesReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonRoute53ProfilesReadOnlyAccess',
+  },
+  'AmazonRoute53ProfilesFullAccess': {
+    PolicyName: 'AmazonRoute53ProfilesFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonRoute53ProfilesFullAccess',
+  },
+  'AmazonOpenSearchDirectQueryGlueCreateAccess': {
+    PolicyName: 'AmazonOpenSearchDirectQueryGlueCreateAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonOpenSearchDirectQueryGlueCreateAccess',
+  },
+  'EC2FastLaunchFullAccess': {
+    PolicyName: 'EC2FastLaunchFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/EC2FastLaunchFullAccess',
+  },
+  'AmazonSESServiceRolePolicy': {
+    PolicyName: 'AmazonSESServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonSESServiceRolePolicy',
+  },
+  'CloudWatchApplicationSignalsReadOnlyAccess': {
+    PolicyName: 'CloudWatchApplicationSignalsReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchApplicationSignalsReadOnlyAccess',
+  },
+  'CloudWatchApplicationSignalsFullAccess': {
+    PolicyName: 'CloudWatchApplicationSignalsFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchApplicationSignalsFullAccess',
+  },
+  'AWSBCMDataExportsServiceRolePolicy': {
+    PolicyName: 'AWSBCMDataExportsServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSBCMDataExportsServiceRolePolicy',
+  },
+  'OpensearchIngestionSelfManagedVpcePolicy': {
+    PolicyName: 'OpensearchIngestionSelfManagedVpcePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/OpensearchIngestionSelfManagedVpcePolicy',
+  },
+  'AWSApplicationAutoscalingWorkSpacesPoolPolicy': {
+    PolicyName: 'AWSApplicationAutoscalingWorkSpacesPoolPolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSApplicationAutoscalingWorkSpacesPoolPolicy',
+  },
+  'ECRTemplateServiceRolePolicy': {
+    PolicyName: 'ECRTemplateServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/ECRTemplateServiceRolePolicy',
+  },
+  'AmazonWorkSpacesSecureBrowserReadOnly': {
+    PolicyName: 'AmazonWorkSpacesSecureBrowserReadOnly',
+    Arn: 'arn:aws:iam::aws:policy/AmazonWorkSpacesSecureBrowserReadOnly',
+  },
+  'SSMQuickSetupRolePolicy': {
+    PolicyName: 'SSMQuickSetupRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/SSMQuickSetupRolePolicy',
+  },
+  'AWSQuickSetupPatchPolicyBaselineAccess': {
+    PolicyName: 'AWSQuickSetupPatchPolicyBaselineAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupPatchPolicyBaselineAccess',
+  },
+  'AWSSystemsManagerEnableConfigRecordingExecutionPolicy': {
+    PolicyName: 'AWSSystemsManagerEnableConfigRecordingExecutionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSSystemsManagerEnableConfigRecordingExecutionPolicy',
+  },
+  'AWSSystemsManagerEnableExplorerExecutionPolicy': {
+    PolicyName: 'AWSSystemsManagerEnableExplorerExecutionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSSystemsManagerEnableExplorerExecutionPolicy',
+  },
+  'AWSQuickSetupDevOpsGuruPermissionsBoundary': {
+    PolicyName: 'AWSQuickSetupDevOpsGuruPermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupDevOpsGuruPermissionsBoundary',
+  },
+  'AWSQuickSetupPatchPolicyPermissionsBoundary': {
+    PolicyName: 'AWSQuickSetupPatchPolicyPermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupPatchPolicyPermissionsBoundary',
+  },
+  'AWSQuickSetupSSMHostMgmtPermissionsBoundary': {
+    PolicyName: 'AWSQuickSetupSSMHostMgmtPermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupSSMHostMgmtPermissionsBoundary',
+  },
+  'AWSQuickSetupDistributorPermissionsBoundary': {
+    PolicyName: 'AWSQuickSetupDistributorPermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupDistributorPermissionsBoundary',
+  },
+  'AWSQuickSetupCFGCPacksPermissionsBoundary': {
+    PolicyName: 'AWSQuickSetupCFGCPacksPermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupCFGCPacksPermissionsBoundary',
+  },
+  'AWSQuickSetupSchedulerPermissionsBoundary': {
+    PolicyName: 'AWSQuickSetupSchedulerPermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupSchedulerPermissionsBoundary',
+  },
+  'AWSQuickSetupDeploymentRolePolicy': {
+    PolicyName: 'AWSQuickSetupDeploymentRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupDeploymentRolePolicy',
+  },
+  'AWSQuickSetupPatchPolicyDeploymentRolePolicy': {
+    PolicyName: 'AWSQuickSetupPatchPolicyDeploymentRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupPatchPolicyDeploymentRolePolicy',
+  },
+  'AmazonWorkSpacesPoolServiceAccess': {
+    PolicyName: 'AmazonWorkSpacesPoolServiceAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonWorkSpacesPoolServiceAccess',
+  },
+  'AmazonQDeveloperAccess': {
+    PolicyName: 'AmazonQDeveloperAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonQDeveloperAccess',
+  },
+  'AppStudioServiceRolePolicy': {
+    PolicyName: 'AppStudioServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AppStudioServiceRolePolicy',
+  },
+  'AmazonWorkSpacesThinClientReadOnlyAccess': {
+    PolicyName: 'AmazonWorkSpacesThinClientReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonWorkSpacesThinClientReadOnlyAccess',
+  },
+  'AmazonSageMakerCanvasEMRServerlessExecutionRolePolicy': {
+    PolicyName: 'AmazonSageMakerCanvasEMRServerlessExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerCanvasEMRServerlessExecutionRolePolicy',
+  },
+  'AmazonBedrockStudioPermissionsBoundary': {
+    PolicyName: 'AmazonBedrockStudioPermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/AmazonBedrockStudioPermissionsBoundary',
+  },
+  'AmazonWorkSpacesThinClientFullAccess': {
+    PolicyName: 'AmazonWorkSpacesThinClientFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonWorkSpacesThinClientFullAccess',
+  },
+  'AWSCompromisedKeyQuarantineV3': {
+    PolicyName: 'AWSCompromisedKeyQuarantineV3',
+    Arn: 'arn:aws:iam::aws:policy/AWSCompromisedKeyQuarantineV3',
+  },
+  'AWSPCSServiceRolePolicy': {
+    PolicyName: 'AWSPCSServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSPCSServiceRolePolicy',
+  },
+  'AmazonSageMakerHyperPodServiceRolePolicy': {
+    PolicyName: 'AmazonSageMakerHyperPodServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonSageMakerHyperPodServiceRolePolicy',
+  },
+  'AWSDirectoryServiceDataFullAccess': {
+    PolicyName: 'AWSDirectoryServiceDataFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSDirectoryServiceDataFullAccess',
+  },
+  'AWSDirectoryServiceDataReadOnlyAccess': {
+    PolicyName: 'AWSDirectoryServiceDataReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSDirectoryServiceDataReadOnlyAccess',
+  },
+  'QAppsServiceRolePolicy': {
+    PolicyName: 'QAppsServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/QAppsServiceRolePolicy',
+  },
+  'AmazonEKSWorkerNodeMinimalPolicy': {
+    PolicyName: 'AmazonEKSWorkerNodeMinimalPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonEKSWorkerNodeMinimalPolicy',
+  },
+  'AWSServiceRoleForProcurementInsightsPolicy': {
+    PolicyName: 'AWSServiceRoleForProcurementInsightsPolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSServiceRoleForProcurementInsightsPolicy',
+  },
+  'AmazonEC2ContainerRegistryPullOnly': {
+    PolicyName: 'AmazonEC2ContainerRegistryPullOnly',
+    Arn: 'arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly',
+  },
+  'AWSDataSyncServiceRolePolicy': {
+    PolicyName: 'AWSDataSyncServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSDataSyncServiceRolePolicy',
+  },
+  'AWSDataExchangeServiceRolePolicyForOrganizationDiscovery': {
+    PolicyName: 'AWSDataExchangeServiceRolePolicyForOrganizationDiscovery',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSDataExchangeServiceRolePolicyForOrganizationDiscovery',
+  },
+  'AWSDataExchangeServiceRolePolicyForLicenseManagement': {
+    PolicyName: 'AWSDataExchangeServiceRolePolicyForLicenseManagement',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSDataExchangeServiceRolePolicyForLicenseManagement',
+  },
+  'AWSSocialMessagingServiceRolePolicy': {
+    PolicyName: 'AWSSocialMessagingServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSSocialMessagingServiceRolePolicy',
+  },
+  'ResourceGroupsTaggingAPITagUntagSupportedResources': {
+    PolicyName: 'ResourceGroupsTaggingAPITagUntagSupportedResources',
+    Arn: 'arn:aws:iam::aws:policy/ResourceGroupsTaggingAPITagUntagSupportedResources',
+  },
+  'AmazonVerifiedPermissionsFullAccess': {
+    PolicyName: 'AmazonVerifiedPermissionsFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonVerifiedPermissionsFullAccess',
+  },
+  'AmazonVerifiedPermissionsReadOnlyAccess': {
+    PolicyName: 'AmazonVerifiedPermissionsReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonVerifiedPermissionsReadOnlyAccess',
+  },
+  'CloudWatchLambdaApplicationSignalsExecutionRolePolicy': {
+    PolicyName: 'CloudWatchLambdaApplicationSignalsExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchLambdaApplicationSignalsExecutionRolePolicy',
+  },
+  'CloudWatchInternetMonitorFullAccess': {
+    PolicyName: 'CloudWatchInternetMonitorFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchInternetMonitorFullAccess',
+  },
+  'AWSDataExchangeDataGrantOwnerFullAccess': {
+    PolicyName: 'AWSDataExchangeDataGrantOwnerFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSDataExchangeDataGrantOwnerFullAccess',
+  },
+  'AWSDataExchangeDataGrantReceiverFullAccess': {
+    PolicyName: 'AWSDataExchangeDataGrantReceiverFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSDataExchangeDataGrantReceiverFullAccess',
+  },
+  'AWSCloudFrontVPCOriginServiceRolePolicy': {
+    PolicyName: 'AWSCloudFrontVPCOriginServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSCloudFrontVPCOriginServiceRolePolicy',
+  },
+  'AmazonEKSNetworkingPolicy': {
+    PolicyName: 'AmazonEKSNetworkingPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonEKSNetworkingPolicy',
+  },
+  'AmazonEKSLoadBalancingPolicy': {
+    PolicyName: 'AmazonEKSLoadBalancingPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonEKSLoadBalancingPolicy',
+  },
+  'AmazonEKSBlockStoragePolicy': {
+    PolicyName: 'AmazonEKSBlockStoragePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonEKSBlockStoragePolicy',
+  },
+  'AmazonEKSComputePolicy': {
+    PolicyName: 'AmazonEKSComputePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonEKSComputePolicy',
+  },
+  'GameLiftContainerFleetPolicy': {
+    PolicyName: 'GameLiftContainerFleetPolicy',
+    Arn: 'arn:aws:iam::aws:policy/GameLiftContainerFleetPolicy',
+  },
+  'AmazonDataZoneBedrockModelManagementPolicy': {
+    PolicyName: 'AmazonDataZoneBedrockModelManagementPolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AmazonDataZoneBedrockModelManagementPolicy',
+  },
+  'AmazonDataZoneBedrockModelConsumptionPolicy': {
+    PolicyName: 'AmazonDataZoneBedrockModelConsumptionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AmazonDataZoneBedrockModelConsumptionPolicy',
+  },
+  'CloudWatchInternetMonitorReadOnlyAccess': {
+    PolicyName: 'CloudWatchInternetMonitorReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchInternetMonitorReadOnlyAccess',
+  },
+  'AmazonODBServiceRolePolicy': {
+    PolicyName: 'AmazonODBServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonODBServiceRolePolicy',
+  },
+  'SMSVoiceServiceRolePolicy': {
+    PolicyName: 'SMSVoiceServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/SMSVoiceServiceRolePolicy',
+  },
+  'AWSPartnerCentralOpportunityManagement': {
+    PolicyName: 'AWSPartnerCentralOpportunityManagement',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerCentralOpportunityManagement',
+  },
+  'AWSPartnerCentralSandboxFullAccess': {
+    PolicyName: 'AWSPartnerCentralSandboxFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerCentralSandboxFullAccess',
+  },
+  'SecurityLakeResourceManagementServiceRolePolicy': {
+    PolicyName: 'SecurityLakeResourceManagementServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/SecurityLakeResourceManagementServiceRolePolicy',
+  },
+  'SQSUnlockQueuePolicy': {
+    PolicyName: 'SQSUnlockQueuePolicy',
+    Arn: 'arn:aws:iam::aws:policy/root-task/SQSUnlockQueuePolicy',
+  },
+  'S3UnlockBucketPolicy': {
+    PolicyName: 'S3UnlockBucketPolicy',
+    Arn: 'arn:aws:iam::aws:policy/root-task/S3UnlockBucketPolicy',
+  },
+  'IAMAuditRootUserCredentials': {
+    PolicyName: 'IAMAuditRootUserCredentials',
+    Arn: 'arn:aws:iam::aws:policy/root-task/IAMAuditRootUserCredentials',
+  },
+  'IAMCreateRootUserPassword': {
+    PolicyName: 'IAMCreateRootUserPassword',
+    Arn: 'arn:aws:iam::aws:policy/root-task/IAMCreateRootUserPassword',
+  },
+  'IAMDeleteRootUserCredentials': {
+    PolicyName: 'IAMDeleteRootUserCredentials',
+    Arn: 'arn:aws:iam::aws:policy/root-task/IAMDeleteRootUserCredentials',
+  },
+  'AmazonECSInfrastructureRolePolicyForVpcLattice': {
+    PolicyName: 'AmazonECSInfrastructureRolePolicyForVpcLattice',
+    Arn: 'arn:aws:iam::aws:policy/AmazonECSInfrastructureRolePolicyForVpcLattice',
+  },
+  'AWSQuickSetupEnableDHMCExecutionPolicy': {
+    PolicyName: 'AWSQuickSetupEnableDHMCExecutionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupEnableDHMCExecutionPolicy',
+  },
+  'AWSQuickSetupManagedInstanceProfileExecutionPolicy': {
+    PolicyName: 'AWSQuickSetupManagedInstanceProfileExecutionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupManagedInstanceProfileExecutionPolicy',
+  },
+  'AWSQuickSetupSSMLifecycleManagementExecutionPolicy': {
+    PolicyName: 'AWSQuickSetupSSMLifecycleManagementExecutionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupSSMLifecycleManagementExecutionPolicy',
+  },
+  'AWSQuickSetupSSMDeploymentS3BucketRolePolicy': {
+    PolicyName: 'AWSQuickSetupSSMDeploymentS3BucketRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupSSMDeploymentS3BucketRolePolicy',
+  },
+  'AWSQuickSetupEnableAREXExecutionPolicy': {
+    PolicyName: 'AWSQuickSetupEnableAREXExecutionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupEnableAREXExecutionPolicy',
+  },
+  'AWSQuickSetupSSMManageResourcesExecutionPolicy': {
+    PolicyName: 'AWSQuickSetupSSMManageResourcesExecutionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupSSMManageResourcesExecutionPolicy',
+  },
+  'AWSQuickSetupSSMDeploymentRolePolicy': {
+    PolicyName: 'AWSQuickSetupSSMDeploymentRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSQuickSetupSSMDeploymentRolePolicy',
+  },
+  'AWS-SSM-Automation-DiagnosisBucketPolicy': {
+    PolicyName: 'AWS-SSM-Automation-DiagnosisBucketPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWS-SSM-Automation-DiagnosisBucketPolicy',
+  },
+  'AWS-SSM-DiagnosisAutomation-AdministrationRolePolicy': {
+    PolicyName: 'AWS-SSM-DiagnosisAutomation-AdministrationRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWS-SSM-DiagnosisAutomation-AdministrationRolePolicy',
+  },
+  'AWS-SSM-DiagnosisAutomation-ExecutionRolePolicy': {
+    PolicyName: 'AWS-SSM-DiagnosisAutomation-ExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWS-SSM-DiagnosisAutomation-ExecutionRolePolicy',
+  },
+  'AWS-SSM-DiagnosisAutomation-OperationalAccountAdministrationRolePolicy': {
+    PolicyName: 'AWS-SSM-DiagnosisAutomation-OperationalAccountAdministrationRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWS-SSM-DiagnosisAutomation-OperationalAccountAdministrationRolePolicy',
+  },
+  'AWS-SSM-RemediationAutomation-AdministrationRolePolicy': {
+    PolicyName: 'AWS-SSM-RemediationAutomation-AdministrationRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWS-SSM-RemediationAutomation-AdministrationRolePolicy',
+  },
+  'AWS-SSM-RemediationAutomation-ExecutionRolePolicy': {
+    PolicyName: 'AWS-SSM-RemediationAutomation-ExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWS-SSM-RemediationAutomation-ExecutionRolePolicy',
+  },
+  'AWS-SSM-RemediationAutomation-OperationalAccountAdministrationRolePolicy': {
+    PolicyName: 'AWS-SSM-RemediationAutomation-OperationalAccountAdministrationRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWS-SSM-RemediationAutomation-OperationalAccountAdministrationRolePolicy',
+  },
+  'AWSPartnerCentralFullAccess': {
+    PolicyName: 'AWSPartnerCentralFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerCentralFullAccess',
+  },
+  'AWSMarketplaceSellerOfferManagement': {
+    PolicyName: 'AWSMarketplaceSellerOfferManagement',
+    Arn: 'arn:aws:iam::aws:policy/AWSMarketplaceSellerOfferManagement',
+  },
+  'SageMakerStudioProjectRoleMachineLearningPolicy': {
+    PolicyName: 'SageMakerStudioProjectRoleMachineLearningPolicy',
+    Arn: 'arn:aws:iam::aws:policy/SageMakerStudioProjectRoleMachineLearningPolicy',
+  },
+  'SageMakerStudioDomainServiceRolePolicy': {
+    PolicyName: 'SageMakerStudioDomainServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioDomainServiceRolePolicy',
+  },
+  'SageMakerStudioDomainExecutionRolePolicy': {
+    PolicyName: 'SageMakerStudioDomainExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioDomainExecutionRolePolicy',
+  },
+  'SageMakerStudioProjectUserRolePermissionsBoundary': {
+    PolicyName: 'SageMakerStudioProjectUserRolePermissionsBoundary',
+    Arn: 'arn:aws:iam::aws:policy/SageMakerStudioProjectUserRolePermissionsBoundary',
+  },
+  'SageMakerStudioProjectProvisioningRolePolicy': {
+    PolicyName: 'SageMakerStudioProjectProvisioningRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioProjectProvisioningRolePolicy',
+  },
+  'SageMakerStudioProjectUserRolePolicy': {
+    PolicyName: 'SageMakerStudioProjectUserRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/SageMakerStudioProjectUserRolePolicy',
+  },
+  'AWSArtifactAgreementsFullAccess': {
+    PolicyName: 'AWSArtifactAgreementsFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSArtifactAgreementsFullAccess',
+  },
+  'AWSArtifactAgreementsReadOnlyAccess': {
+    PolicyName: 'AWSArtifactAgreementsReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSArtifactAgreementsReadOnlyAccess',
+  },
+  'AWSPartnerLedSupportReadOnlyAccess': {
+    PolicyName: 'AWSPartnerLedSupportReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerLedSupportReadOnlyAccess',
+  },
+  'AWSObservabilityAdminServiceRolePolicy': {
+    PolicyName: 'AWSObservabilityAdminServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSObservabilityAdminServiceRolePolicy',
+  },
+  'SageMakerStudioFullAccess': {
+    PolicyName: 'SageMakerStudioFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/SageMakerStudioFullAccess',
+  },
+  'DeclarativePoliciesEC2Report': {
+    PolicyName: 'DeclarativePoliciesEC2Report',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/DeclarativePoliciesEC2Report',
+  },
+  'AWSSecurityIncidentResponseServiceRolePolicy': {
+    PolicyName: 'AWSSecurityIncidentResponseServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSSecurityIncidentResponseServiceRolePolicy',
+  },
+  'AWSSecurityIncidentResponseTriageServiceRolePolicy': {
+    PolicyName: 'AWSSecurityIncidentResponseTriageServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSSecurityIncidentResponseTriageServiceRolePolicy',
+  },
+  'CloudWatchOpenSearchDashboardsFullAccess': {
+    PolicyName: 'CloudWatchOpenSearchDashboardsFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchOpenSearchDashboardsFullAccess',
+  },
+  'CloudWatchOpenSearchDashboardAccess': {
+    PolicyName: 'CloudWatchOpenSearchDashboardAccess',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchOpenSearchDashboardAccess',
+  },
+  'CloudWatchNetworkFlowMonitorServiceRolePolicy': {
+    PolicyName: 'CloudWatchNetworkFlowMonitorServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/CloudWatchNetworkFlowMonitorServiceRolePolicy',
+  },
+  'CloudWatchNetworkFlowMonitorAgentPublishPolicy': {
+    PolicyName: 'CloudWatchNetworkFlowMonitorAgentPublishPolicy',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchNetworkFlowMonitorAgentPublishPolicy',
+  },
+  'CloudWatchNetworkFlowMonitorTopologyServiceRolePolicy': {
+    PolicyName: 'CloudWatchNetworkFlowMonitorTopologyServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/CloudWatchNetworkFlowMonitorTopologyServiceRolePolicy',
+  },
+  'AWSSecurityIncidentResponseReadOnlyAccess': {
+    PolicyName: 'AWSSecurityIncidentResponseReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSSecurityIncidentResponseReadOnlyAccess',
+  },
+  'AWSSecurityIncidentResponseCaseFullAccess': {
+    PolicyName: 'AWSSecurityIncidentResponseCaseFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSSecurityIncidentResponseCaseFullAccess',
+  },
+  'AWSSecurityIncidentResponseFullAccess': {
+    PolicyName: 'AWSSecurityIncidentResponseFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSSecurityIncidentResponseFullAccess',
+  },
+  'AIOpsAssistantPolicy': {
+    PolicyName: 'AIOpsAssistantPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AIOpsAssistantPolicy',
+  },
+  'AIOpsConsoleAdminPolicy': {
+    PolicyName: 'AIOpsConsoleAdminPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AIOpsConsoleAdminPolicy',
+  },
+  'AIOpsReadOnlyAccess': {
+    PolicyName: 'AIOpsReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AIOpsReadOnlyAccess',
+  },
+  'AIOpsOperatorAccess': {
+    PolicyName: 'AIOpsOperatorAccess',
+    Arn: 'arn:aws:iam::aws:policy/AIOpsOperatorAccess',
+  },
+  'AuroraDsqlServiceLinkedRolePolicy': {
+    PolicyName: 'AuroraDsqlServiceLinkedRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AuroraDsqlServiceLinkedRolePolicy',
+  },
+  'AmazonS3TablesReadOnlyAccess': {
+    PolicyName: 'AmazonS3TablesReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3TablesReadOnlyAccess',
+  },
+  'AmazonAuroraDSQLReadOnlyAccess': {
+    PolicyName: 'AmazonAuroraDSQLReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonAuroraDSQLReadOnlyAccess',
+  },
+  'AmazonS3TablesFullAccess': {
+    PolicyName: 'AmazonS3TablesFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3TablesFullAccess',
+  },
+  'QBusinessQuicksightPluginPolicy': {
+    PolicyName: 'QBusinessQuicksightPluginPolicy',
+    Arn: 'arn:aws:iam::aws:policy/QBusinessQuicksightPluginPolicy',
+  },
+  'AmazonAuroraDSQLConsoleFullAccess': {
+    PolicyName: 'AmazonAuroraDSQLConsoleFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonAuroraDSQLConsoleFullAccess',
+  },
+  'AmazonAuroraDSQLFullAccess': {
+    PolicyName: 'AmazonAuroraDSQLFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonAuroraDSQLFullAccess',
+  },
+  'AmazonSageMakerTrainingPlanCreateAccess': {
+    PolicyName: 'AmazonSageMakerTrainingPlanCreateAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerTrainingPlanCreateAccess',
+  },
+  'AmazonSageMakerCanvasSMDataScienceAssistantAccess': {
+    PolicyName: 'AmazonSageMakerCanvasSMDataScienceAssistantAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerCanvasSMDataScienceAssistantAccess',
+  },
+  'AWSPartnerCentralSellingResourceSnapshotJobExecutionRolePolicy': {
+    PolicyName: 'AWSPartnerCentralSellingResourceSnapshotJobExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerCentralSellingResourceSnapshotJobExecutionRolePolicy',
+  },
+  'AWSBackupServiceRolePolicyForIndexing': {
+    PolicyName: 'AWSBackupServiceRolePolicyForIndexing',
+    Arn: 'arn:aws:iam::aws:policy/AWSBackupServiceRolePolicyForIndexing',
+  },
+  'AWSBackupServiceRolePolicyForItemRestores': {
+    PolicyName: 'AWSBackupServiceRolePolicyForItemRestores',
+    Arn: 'arn:aws:iam::aws:policy/AWSBackupServiceRolePolicyForItemRestores',
+  },
+  'AWSManagedServices_SelfServiceReporting_ServiceRolePolicy': {
+    PolicyName: 'AWSManagedServices_SelfServiceReporting_ServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSManagedServices_SelfServiceReporting_ServiceRolePolicy',
+  },
+  'AmazonSageMakerPartnerAppsFullAccess': {
+    PolicyName: 'AmazonSageMakerPartnerAppsFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerPartnerAppsFullAccess',
+  },
+  'SageMakerStudioQueryExecutionRolePolicy': {
+    PolicyName: 'SageMakerStudioQueryExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioQueryExecutionRolePolicy',
+  },
+  'SageMakerStudioEMRServiceRolePolicy': {
+    PolicyName: 'SageMakerStudioEMRServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioEMRServiceRolePolicy',
+  },
+  'AWSElementalMediaConnectReadOnlyAccess': {
+    PolicyName: 'AWSElementalMediaConnectReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSElementalMediaConnectReadOnlyAccess',
+  },
+  'AWSElementalMediaConnectFullAccess': {
+    PolicyName: 'AWSElementalMediaConnectFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSElementalMediaConnectFullAccess',
+  },
+  'SageMakerStudioBedrockAgentServiceRolePolicy': {
+    PolicyName: 'SageMakerStudioBedrockAgentServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioBedrockAgentServiceRolePolicy',
+  },
+  'SageMakerStudioBedrockChatAgentUserRolePolicy': {
+    PolicyName: 'SageMakerStudioBedrockChatAgentUserRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioBedrockChatAgentUserRolePolicy',
+  },
+  'SageMakerStudioBedrockFlowServiceRolePolicy': {
+    PolicyName: 'SageMakerStudioBedrockFlowServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioBedrockFlowServiceRolePolicy',
+  },
+  'SageMakerStudioBedrockPromptUserRolePolicy': {
+    PolicyName: 'SageMakerStudioBedrockPromptUserRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioBedrockPromptUserRolePolicy',
+  },
+  'SageMakerStudioBedrockEvaluationJobServiceRolePolicy': {
+    PolicyName: 'SageMakerStudioBedrockEvaluationJobServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioBedrockEvaluationJobServiceRolePolicy',
+  },
+  'SageMakerStudioBedrockKnowledgeBaseServiceRolePolicy': {
+    PolicyName: 'SageMakerStudioBedrockKnowledgeBaseServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioBedrockKnowledgeBaseServiceRolePolicy',
+  },
+  'SageMakerStudioBedrockKnowledgeBaseCustomResourcePolicy': {
+    PolicyName: 'SageMakerStudioBedrockKnowledgeBaseCustomResourcePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioBedrockKnowledgeBaseCustomResourcePolicy',
+  },
+  'SageMakerStudioBedrockFunctionExecutionRolePolicy': {
+    PolicyName: 'SageMakerStudioBedrockFunctionExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioBedrockFunctionExecutionRolePolicy',
+  },
+  'SageMakerStudioEMRInstanceRolePolicy': {
+    PolicyName: 'SageMakerStudioEMRInstanceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioEMRInstanceRolePolicy',
+  },
+  'AWSBackupSearchOperatorAccess': {
+    PolicyName: 'AWSBackupSearchOperatorAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSBackupSearchOperatorAccess',
+  },
+  'AWSIoTManagedIntegrationsFullAccess': {
+    PolicyName: 'AWSIoTManagedIntegrationsFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSIoTManagedIntegrationsFullAccess',
+  },
+  'AWSIoTManagedIntegrationsRolePolicy': {
+    PolicyName: 'AWSIoTManagedIntegrationsRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSIoTManagedIntegrationsRolePolicy',
   },
 };

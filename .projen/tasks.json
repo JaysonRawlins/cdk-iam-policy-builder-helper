@@ -220,12 +220,7 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation",
-      "steps": [
-        {
-          "exec": "ts-node ./src/bin/download-actions-json.ts &&\nts-node ./src/bin/download-managed-policies-json.ts &&\nts-node ./src/bin/create-actions-json.ts"
-        }
-      ]
+      "description": "Prepare the project for compilation"
     },
     "release": {
       "name": "release",
@@ -287,6 +282,14 @@
       "steps": [
         {
           "builtin": "release/reset-version"
+        }
+      ]
+    },
+    "update-policies": {
+      "name": "update-policies",
+      "steps": [
+        {
+          "exec": "ts-node ./src/bin/download-actions-json.ts\nts-node ./src/bin/download-managed-policies-json.ts\nts-node ./src/bin/create-actions-json.ts\nnpx projen eslint"
         }
       ]
     },

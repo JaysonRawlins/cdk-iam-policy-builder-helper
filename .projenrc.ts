@@ -61,9 +61,14 @@ const project = new awscdk.AwsCdkConstructLibrary({
   eslint: true,
 });
 
-// Add the 'download-policies' task to the 'prebuild' phase of the build process
-project.preCompileTask.exec(`ts-node ./src/bin/download-actions-json.ts &&
-ts-node ./src/bin/download-managed-policies-json.ts &&
-ts-node ./src/bin/create-actions-json.ts`);
+
+project.tasks.addTask('update-policies', {
+  exec: [
+    'ts-node ./src/bin/download-actions-json.ts',
+    'ts-node ./src/bin/download-managed-policies-json.ts',
+    'ts-node ./src/bin/create-actions-json.ts',
+    'npx projen eslint',
+  ].join('\n'),
+});
 
 project.synth();
