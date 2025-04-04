@@ -5339,4 +5339,8 @@ export const ManagedPolicies = {
     PolicyName: 'AWSIoTManagedIntegrationsRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSIoTManagedIntegrationsRolePolicy',
   },
+  'AmazonECSComputeServiceRolePolicy': {
+    PolicyName: 'AmazonECSComputeServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonECSComputeServiceRolePolicy',
+  },
 };
