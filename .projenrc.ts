@@ -1,4 +1,5 @@
 import { awscdk } from 'projen';
+import { GithubCredentials } from 'projen/lib/github';
 import { NpmAccess } from 'projen/lib/javascript';
 
 const cdkVersion = '2.189.1';
@@ -41,8 +42,27 @@ const project = new awscdk.AwsCdkConstructLibrary({
   projenrcTs: true,
   repositoryUrl: 'https://github.com/JaysonRawlins/cdk-iam-policy-builder-helper.git',
   githubOptions: {
+    projenCredentials: GithubCredentials.fromApp({
+      appIdSecret: 'PROJEN_APP_ID',
+      privateKeySecret: 'PROJEN_APP_PRIVATE_KEY',
+    }),
     mergify: false,
-    pullRequestLint: false,
+    pullRequestLintOptions: {
+      semanticTitleOptions: {
+        types: [
+          'feat',
+          'fix',
+          'docs',
+          'style',
+          'refactor',
+          'perf',
+          'test',
+          'chore',
+          'revert',
+          'ci',
+        ],
+      },
+    },
   },
   depsUpgrade: true,
   publishToPypi: {
@@ -89,5 +109,8 @@ project.package.addField('resolutions', {
   'form-data': '^4.0.4',
   '@eslint/plugin-kit': '^0.3.4',
 });
+
+project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.permissions.id-token', 'write');
+project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.permissions.packages', 'read');
 
 project.synth();
