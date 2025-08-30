@@ -1,10 +1,10 @@
 import { awscdk } from 'projen';
 import { NpmAccess } from 'projen/lib/javascript';
 
-const cdkVersion = '2.150.0';
-const minNodeVersion = '20.9.0';
+const cdkVersion = '2.189.1';
+const minNodeVersion = '22.x';
 const jsiiVersion = '~5.8.0';
-const constructsVersion = '10.3.5';
+const constructsVersion = '10.4.2';
 const projenVersion = '0.91.1';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Jayson Rawlins',
@@ -26,18 +26,18 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: '@jjrawlins/cdk-iam-policy-builder-helper',
   npmAccess: NpmAccess.PUBLIC,
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/jjrawlins/cdk-iam-policy-builder-helper.git',
+  repositoryUrl: 'https://github.com/JaysonRawlins/cdk-iam-policy-builder-helper.git',
   githubOptions: {
     mergify: false,
     pullRequestLint: false,
   },
-  depsUpgrade: false,
+  depsUpgrade: true,
   publishToPypi: {
     distName: 'jjrawlins_cdk-iam-policy-builder-helper',
     module: 'jjrawlins_cdk_iam_policy_builder_helper',
   },
   publishToGo: {
-    moduleName: 'github.com/jjrawlins/cdk-iam-policy-builder-helper-construct',
+    moduleName: 'github.com/JaysonRawlins/cdk-iam-policy-builder-helper-construct',
   },
   bundledDeps: [
     '@aws-sdk/client-iam',
@@ -48,9 +48,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'projen',
     'constructs',
     '@aws-sdk/client-iam',
+    'axios@^1.8.2',
   ],
   devDeps: [
-    '@types/axios',
     '@aws-sdk/types',
     '@types/node',
   ],
@@ -62,13 +62,18 @@ const project = new awscdk.AwsCdkConstructLibrary({
 });
 
 
-project.tasks.addTask('update-policies', {
-  exec: [
-    'ts-node ./src/bin/download-actions-json.ts',
-    'ts-node ./src/bin/download-managed-policies-json.ts',
-    'ts-node ./src/bin/create-actions-json.ts',
-    'npx projen eslint',
-  ].join('\n'),
+project.preCompileTask.exec([
+  'ts-node ./src/bin/download-actions-json.ts',
+  'ts-node ./src/bin/download-managed-policies-json.ts',
+  'ts-node ./src/bin/create-actions-json.ts',
+  'npx projen eslint',
+].join('\n'));
+
+// Add Yarn resolutions to ensure patched transitive versions
+project.package.addField('resolutions', {
+  'brace-expansion': '1.1.12',
+  'form-data': '^4.0.4',
+  '@eslint/plugin-kit': '^0.3.4',
 });
 
 project.synth();

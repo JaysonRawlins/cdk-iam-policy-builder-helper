@@ -1,0 +1,60 @@
+queue_rules:
+  - name: default
+    update_method: merge
+    queue_conditions:
+      - label = automerge
+      - -label~=(do-not-merge)
+      - status-success=build
+    merge_method: squash
+    commit_message_template: |-
+      {{ title }} (#{{ number }})
+
+      {{ body }}
+pull_request_rules:
+  - name: Automatic Merge Dependebot Prs
+    description: Merge when PR passes all branch protection and has label automerge
+    conditions:
+      - author=dependabot[bot]
+      - -label~=(do-not-merge)
+      - status-success=build
+    actions:
+      merge:
+        method: squash
+      delete_head_branch: {}
+  - name: Automatic merge
+    description: Merge when PR passes all branch protection and has label automerge
+    conditions:
+      - label = automerge
+    actions:
+      merge:
+        method: squash
+      delete_head_branch: {}
+  - name: Label conflicting pull requests
+    description: Add a label to a pull request with conflict to spot it easily
+    conditions:
+      - conflict
+      - -closed
+    actions:
+      label:
+        toggle:
+          - conflict
+  - name: Auto-merge dependency upgrade PRs
+    conditions:
+      - head=github-actions/upgrade
+      - -label~=(do-not-merge)
+      - status-success=build
+    actions:
+      merge:
+        method: squash
+      delete_head_branch: {}
+  - name: Automatic merge on approval and successful build
+    actions:
+      delete_head_branch: {}
+      queue:
+        name: default
+    conditions:
+      - label = automerge
+      - -label~=(do-not-merge)
+      - status-success=build
+merge_queue:
+  max_parallel_checks: 1

@@ -10,10 +10,6 @@
       "type": "build"
     },
     {
-      "name": "@types/axios",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -107,16 +103,21 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.150.0",
+      "version": "^2.189.1",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.3.5",
+      "version": "^10.4.2",
       "type": "peer"
     },
     {
       "name": "@aws-sdk/client-iam",
+      "type": "runtime"
+    },
+    {
+      "name": "axios",
+      "version": "^1.8.2",
       "type": "runtime"
     },
     {

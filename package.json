@@ -3,7 +3,7 @@
   "description": "A CDK construct that helps build IAM policies using the AWS IAM Policy Builder dump. Normally it is better to use cdk-iam-floyd, However, I found that cdk-iam-floyd currently is not jsii compliant so I wasn't able to use it in my jsii compliant projects in languages that are not typescript or python.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jjrawlins/cdk-iam-policy-builder-helper.git"
+    "url": "https://github.com/JaysonRawlins/cdk-iam-policy-builder-helper.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -21,12 +21,13 @@
     "package:js": "npx projen package:js",
     "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
+    "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
     "release": "npx projen release",
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
-    "update-policies": "npx projen update-policies",
+    "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen"
   },
@@ -38,12 +39,11 @@
   "devDependencies": {
     "@aws-sdk/types": "^3.535.0",
     "@stylistic/eslint-plugin": "^2",
-    "@types/axios": "^0.14.0",
     "@types/jest": "^29.5.12",
     "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "aws-cdk-lib": "2.150.0",
+    "aws-cdk-lib": "2.189.1",
     "commit-and-tag-version": "^12",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -60,12 +60,12 @@
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.150.0",
-    "constructs": "^10.3.5"
+    "aws-cdk-lib": "^2.189.1",
+    "constructs": "^10.4.2"
   },
   "dependencies": {
     "@aws-sdk/client-iam": "^3.565.0",
-    "axios": "1.7.4",
+    "axios": "^1.8.2",
     "constructs": "^10.4.2",
     "jsonc-parser": "^3.2.1",
     "projen": "^0.91.1"
@@ -75,6 +75,11 @@
     "axios",
     "jsonc-parser"
   ],
+  "resolutions": {
+    "brace-expansion": "1.1.12",
+    "form-data": "^4.0.4",
+    "@eslint/plugin-kit": "^0.3.4"
+  },
   "keywords": [
     "aws",
     "cdk",
@@ -82,7 +87,7 @@
     "iam-policy"
   ],
   "engines": {
-    "node": ">= 20.9.0"
+    "node": ">= 22.x"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
@@ -145,7 +150,7 @@
         "module": "jjrawlins_cdk_iam_policy_builder_helper"
       },
       "go": {
-        "moduleName": "github.com/jjrawlins/cdk-iam-policy-builder-helper-construct"
+        "moduleName": "github.com/JaysonRawlins/cdk-iam-policy-builder-helper-construct"
       }
     },
     "tsc": {
