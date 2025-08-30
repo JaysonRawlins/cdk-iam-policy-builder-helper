@@ -27,7 +27,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   workflowBootstrapSteps: [
     {
       name: 'configure aws credentials',
-      uses: 'aws-actions/configure-aws-credentials@v1',
+      uses: 'aws-actions/configure-aws-credentials@v4',
       with: {
         'role-to-assume': '${{ secrets.AWS_GITHUB_OIDC_ROLE }}',
         'role-duration-seconds': 900,
