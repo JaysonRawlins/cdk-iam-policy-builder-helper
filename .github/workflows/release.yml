@@ -103,7 +103,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
+      contents: write
+      packages: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v4
@@ -151,7 +152,9 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      id-token: write
+      packages: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v4
@@ -200,7 +203,9 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      id-token: write
+      packages: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v4
