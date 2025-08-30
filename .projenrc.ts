@@ -24,6 +24,19 @@ const project = new awscdk.AwsCdkConstructLibrary({
   minNodeVersion: minNodeVersion,
   jsiiVersion: jsiiVersion,
   name: '@jjrawlins/cdk-iam-policy-builder-helper',
+  workflowBootstrapSteps: [
+    {
+      name: 'configure aws credentials',
+      uses: 'aws-actions/configure-aws-credentials@v1',
+      with: {
+        'role-to-assume': '{{ secrets.AWS_GITHUB_OIDC_ROLE }}',
+        'role-duration-seconds': 900,
+        'aws-region': '{{ secrets.AWS_GITHUB_OIDC_REGION }}',
+        'role-skip-session-tagging': true,
+        'role-session-name': 'GitHubActions',
+      },
+    },
+  ],
   npmAccess: NpmAccess.PUBLIC,
   projenrcTs: true,
   repositoryUrl: 'https://github.com/JaysonRawlins/cdk-iam-policy-builder-helper.git',
@@ -37,7 +50,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     module: 'jjrawlins_cdk_iam_policy_builder_helper',
   },
   publishToGo: {
-    moduleName: 'github.com/JaysonRawlins/cdk-iam-policy-builder-helper-construct',
+    moduleName: 'github.com/jaysonrawlins/cdk-iam-policy-builder-helper',
+    packageName: 'cdk-iam-policy-builder-helper',
   },
   bundledDeps: [
     '@aws-sdk/client-iam',

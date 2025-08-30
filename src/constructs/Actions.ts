@@ -218,6 +218,7 @@ export const Actions = {
     DeleteInvestigation: 'aiops:DeleteInvestigation',
     DeleteInvestigationGroup: 'aiops:DeleteInvestigationGroup',
     DeleteInvestigationGroupPolicy: 'aiops:DeleteInvestigationGroupPolicy',
+    GetEphemeralInvestigationResults: 'aiops:GetEphemeralInvestigationResults',
     GetInvestigation: 'aiops:GetInvestigation',
     GetInvestigationEvent: 'aiops:GetInvestigationEvent',
     GetInvestigationGroup: 'aiops:GetInvestigationGroup',

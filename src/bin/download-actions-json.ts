@@ -16,10 +16,6 @@ async function fetchData() {
     const response = await axios.get('https://awspolicygen.s3.amazonaws.com/js/policies.js', {
       headers: headers,
     });
-    console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response);
 
     const index = response.data.indexOf('=');
     if (index === -1) {
@@ -37,7 +33,7 @@ async function fetchData() {
       return;
     }
 
-    console.log(jsonData.serviceMap);
+    // console.log(jsonData.serviceMap);
 
     const methods: string[] = [];
 
@@ -45,7 +41,7 @@ async function fetchData() {
       let prefix = jsonData.serviceMap[service].StringPrefix;
       jsonData.serviceMap[service].Actions.forEach((action: string) => {
         methods.push(`${prefix}:${action}`);
-        console.log(`${prefix}:${action}`);
+        // console.log(`${prefix}:${action}`);
       });
     }
 

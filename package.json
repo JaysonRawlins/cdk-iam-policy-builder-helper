@@ -150,7 +150,8 @@
         "module": "jjrawlins_cdk_iam_policy_builder_helper"
       },
       "go": {
-        "moduleName": "github.com/JaysonRawlins/cdk-iam-policy-builder-helper-construct"
+        "moduleName": "github.com/jaysonrawlins/cdk-iam-policy-builder-helper",
+        "packageName": "cdk-iam-policy-builder-helper"
       }
     },
     "tsc": {
