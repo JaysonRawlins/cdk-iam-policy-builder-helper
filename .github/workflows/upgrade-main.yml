@@ -10,7 +10,10 @@ jobs:
     name: Upgrade
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      id-token: write
+      packages: write
+      pull-requests: write
     outputs:
       patch_created: ${{ steps.create_patch.outputs.patch_created }}
     steps:
