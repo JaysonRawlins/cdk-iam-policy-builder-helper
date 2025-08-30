@@ -29,9 +29,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
       name: 'configure aws credentials',
       uses: 'aws-actions/configure-aws-credentials@v1',
       with: {
-        'role-to-assume': '{{ secrets.AWS_GITHUB_OIDC_ROLE }}',
+        'role-to-assume': '${{ secrets.AWS_GITHUB_OIDC_ROLE }}',
         'role-duration-seconds': 900,
-        'aws-region': '{{ secrets.AWS_GITHUB_OIDC_REGION }}',
+        'aws-region': '${{ secrets.AWS_GITHUB_OIDC_REGION }}',
         'role-skip-session-tagging': true,
         'role-session-name': 'GitHubActions',
       },
