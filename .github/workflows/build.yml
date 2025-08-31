@@ -78,6 +78,7 @@ jobs:
         with:
           app_id: ${{ secrets.PROJEN_APP_ID }}
           private_key: ${{ secrets.PROJEN_APP_PRIVATE_KEY }}
+          permissions: '{"contents":"write","issues":"write","pull_requests":"write","workflows":"write","actions":"write","packages":"write","security_events":"write","members":"read"}'
       - name: Checkout
         uses: actions/checkout@v4
         with:

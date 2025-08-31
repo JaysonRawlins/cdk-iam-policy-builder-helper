@@ -1,5 +1,6 @@
 import { awscdk } from 'projen';
 import { GithubCredentials } from 'projen/lib/github';
+import { AppPermission } from 'projen/lib/github/workflows-model';
 import { NpmAccess } from 'projen/lib/javascript';
 
 const cdkVersion = '2.189.1';
@@ -45,6 +46,16 @@ const project = new awscdk.AwsCdkConstructLibrary({
     projenCredentials: GithubCredentials.fromApp({
       appIdSecret: 'PROJEN_APP_ID',
       privateKeySecret: 'PROJEN_APP_PRIVATE_KEY',
+      permissions: {
+        contents: AppPermission.WRITE,
+        issues: AppPermission.WRITE,
+        pullRequests: AppPermission.WRITE,
+        workflows: AppPermission.WRITE,
+        actions: AppPermission.WRITE,
+        packages: AppPermission.WRITE,
+        securityEvents: AppPermission.WRITE,
+        members: AppPermission.READ,
+      },
     }),
     mergify: false,
     pullRequestLintOptions: {
