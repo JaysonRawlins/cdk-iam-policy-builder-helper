@@ -1,6 +1,5 @@
 import { awscdk } from 'projen';
 import { GithubCredentials } from 'projen/lib/github';
-import { AppPermission } from 'projen/lib/github/workflows-model';
 import { NpmAccess } from 'projen/lib/javascript';
 
 const cdkVersion = '2.189.1';
@@ -46,16 +45,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     projenCredentials: GithubCredentials.fromApp({
       appIdSecret: 'PROJEN_APP_ID',
       privateKeySecret: 'PROJEN_APP_PRIVATE_KEY',
-      permissions: {
-        contents: AppPermission.WRITE,
-        issues: AppPermission.WRITE,
-        pullRequests: AppPermission.WRITE,
-        workflows: AppPermission.WRITE,
-        actions: AppPermission.WRITE,
-        packages: AppPermission.WRITE,
-        securityEvents: AppPermission.WRITE,
-        members: AppPermission.READ,
-      },
     }),
     mergify: false,
     pullRequestLintOptions: {
@@ -125,9 +114,12 @@ project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.packages', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.pull-requests', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.contents', 'write');
+
+project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.id-token', 'write');
+project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.packages', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.pull-requests', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.contents', 'write');
-project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.id-token', 'write');
+
 
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.permissions.packages', 'read');

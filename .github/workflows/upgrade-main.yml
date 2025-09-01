@@ -57,8 +57,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
       id-token: write
+      packages: write
+      pull-requests: write
     if: ${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Generate token
@@ -67,14 +68,6 @@ jobs:
         with:
           app-id: ${{ secrets.PROJEN_APP_ID }}
           private-key: ${{ secrets.PROJEN_APP_PRIVATE_KEY }}
-          permission-contents: write
-          permission-issues: write
-          permission-pull-requests: write
-          permission-workflows: write
-          permission-actions: write
-          permission-packages: write
-          permission-security-events: write
-          permission-members: read
       - name: Checkout
         uses: actions/checkout@v4
         with:
