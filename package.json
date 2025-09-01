@@ -68,7 +68,7 @@
     "axios": "^1.8.2",
     "constructs": "^10.4.2",
     "jsonc-parser": "^3.2.1",
-    "projen": "^0.91.1"
+    "projen": "^0.94.2"
   },
   "bundledDependencies": [
     "@aws-sdk/client-iam",

@@ -42,6 +42,7 @@ jobs:
         run: |-
           git add .
           git diff --staged --patch --exit-code > repo.patch || echo "self_mutation_happened=true" >> $GITHUB_OUTPUT
+        shell: bash
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
@@ -74,11 +75,18 @@ jobs:
     steps:
       - name: Generate token
         id: generate_token
-        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a
+        uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5
         with:
-          app_id: ${{ secrets.PROJEN_APP_ID }}
-          private_key: ${{ secrets.PROJEN_APP_PRIVATE_KEY }}
-          permissions: '{"contents":"write","issues":"write","pull_requests":"write","workflows":"write","actions":"write","packages":"write","security_events":"write","members":"read"}'
+          app-id: ${{ secrets.PROJEN_APP_ID }}
+          private-key: ${{ secrets.PROJEN_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+          permission-workflows: write
+          permission-actions: write
+          permission-packages: write
+          permission-security-events: write
+          permission-members: read
       - name: Checkout
         uses: actions/checkout@v4
         with:
