@@ -249,17 +249,7 @@ jobs:
           GIT_USER_EMAIL: github-actions@github.com
           GITHUB_TOKEN: ${{ secrets.GO_GITHUB_TOKEN }}
         run: npx -p publib@latest publib-golang
-  package_npm:
-    permissions:
-      id-token: write
-      packages: read
-      contents: write
-  package_pypi:
-    permissions:
-      contents: write
-      id-token: write
-      packages: read
-  package_golang:
+  release_maven:
     permissions:
       id-token: write
       packages: read
