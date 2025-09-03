@@ -130,14 +130,25 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release.perm
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_npm.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_npm.permissions.packages', 'read');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_npm.permissions.contents', 'write');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_npm.permissions.id-token', 'write');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_npm.permissions.packages', 'read');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_npm.permissions.contents', 'write');
 
+
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_pypi.permissions.contents', 'write');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_pypi.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_pypi.permissions.packages', 'read');
-project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_pypi.permissions.contents', 'write');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_pypi.permissions.contents', 'write');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_pypi.permissions.id-token', 'write');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_pypi.permissions.packages', 'read');
+
 
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_golang.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_golang.permissions.packages', 'read');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_golang.permissions.contents', 'write');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_golang.permissions.id-token', 'write');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_golang.permissions.packages', 'read');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.package_golang.permissions.contents', 'write');
 
 
 project.synth();
