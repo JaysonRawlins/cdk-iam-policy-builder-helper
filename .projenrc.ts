@@ -154,10 +154,6 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_pypi
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_pypi.permissions.packages', 'read');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_pypi.permissions.contents', 'write');
 
-project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_maven.permissions.id-token', 'write');
-project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_maven.permissions.packages', 'read');
-project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_maven.permissions.contents', 'write');
-
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_golang.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_golang.permissions.packages', 'read');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_golang.permissions.contents', 'write');
