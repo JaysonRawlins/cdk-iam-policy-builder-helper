@@ -38,7 +38,16 @@ pull_request_rules:
       label:
         toggle:
           - conflict
-  - name: Auto-merge dependency upgrade PRs
+  - name: Auto-merge dependency upgrade PRs Constructs
+    conditions:
+      - head=github-actions/upgrade-main
+      - -label~=(do-not-merge)
+      - status-success=build
+    actions:
+      merge:
+        method: squash
+      delete_head_branch: {}
+  - name: Auto-merge dependency upgrade PRs CDK Stacks
     conditions:
       - head=github-actions/upgrade
       - -label~=(do-not-merge)
@@ -52,6 +61,8 @@ pull_request_rules:
       delete_head_branch: {}
       queue:
         name: default
+      merge:
+        method: squash
     conditions:
       - label = automerge
       - -label~=(do-not-merge)
