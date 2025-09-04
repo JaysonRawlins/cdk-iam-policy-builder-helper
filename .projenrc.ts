@@ -2,7 +2,7 @@ import { awscdk } from 'projen';
 import { GithubCredentials } from 'projen/lib/github';
 import { NpmAccess } from 'projen/lib/javascript';
 
-const cdkVersion = '2.189.1';
+const cdkVersion = '2.214.0';
 const minNodeVersion = '22.x';
 const jsiiVersion = '~5.8.0';
 const constructsVersion = '10.4.2';
