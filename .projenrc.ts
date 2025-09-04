@@ -108,6 +108,7 @@ project.package.addField('resolutions', {
   'brace-expansion': '1.1.12',
   'form-data': '^4.0.4',
   '@eslint/plugin-kit': '^0.3.4',
+  'eslint-import-resolver-typescript': '^4.4.4',
 });
 
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.id-token', 'write');
