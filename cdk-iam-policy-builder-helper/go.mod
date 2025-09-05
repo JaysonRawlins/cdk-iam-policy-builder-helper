@@ -3,7 +3,7 @@ module github.com/jaysonrawlins/cdk-iam-policy-builder-helper/cdk-iam-policy-bui
 go 1.23
 
 require (
-	github.com/aws/jsii-runtime-go v1.113.0
+	github.com/aws/jsii-runtime-go v1.114.1
 	github.com/aws/aws-cdk-go/awscdk/v2 v2.214.0
 	github.com/aws/constructs-go/constructs/v10 v10.4.2
 	github.com/projen/projen-go/projen v0.95.6
