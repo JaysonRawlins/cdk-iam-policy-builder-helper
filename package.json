@@ -37,7 +37,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/types": "^3.862.0",
+    "@aws-sdk/types": "^3.887.0",
     "@stylistic/eslint-plugin": "^2",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
@@ -64,7 +64,7 @@
     "constructs": "^10.4.2"
   },
   "dependencies": {
-    "@aws-sdk/client-iam": "^3.886.0",
+    "@aws-sdk/client-iam": "^3.887.0",
     "axios": "^1.8.2",
     "constructs": "^10.4.2",
     "jsonc-parser": "^3.3.1",
