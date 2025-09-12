@@ -147,7 +147,7 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "jjrawlins_cdk-iam-policy-builder-helper",
+        "distName": "jjrawlins-cdk-iam-policy-builder-helper",
         "module": "jjrawlins_cdk_iam_policy_builder_helper"
       },
       "go": {

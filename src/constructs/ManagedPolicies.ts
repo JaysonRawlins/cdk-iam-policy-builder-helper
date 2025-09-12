@@ -5551,4 +5551,8 @@ export const ManagedPolicies = {
     PolicyName: 'AWSTransformApplicationDeploymentPolicy',
     Arn: 'arn:aws:iam::aws:policy/service-role/AWSTransformApplicationDeploymentPolicy',
   },
+  'AWSBillingServiceRolePolicy': {
+    PolicyName: 'AWSBillingServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSBillingServiceRolePolicy',
+  },
 };
