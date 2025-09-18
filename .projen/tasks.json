@@ -227,7 +227,7 @@
       "description": "Prepare the project for compilation",
       "steps": [
         {
-          "exec": "rm src/constructs/ManagedPolicies.ts || true\nts-node ./src/bin/download-actions-json.ts\nts-node ./src/bin/download-managed-policies-json.ts\nts-node ./src/bin/create-actions-json.ts\nnpx projen eslint"
+          "exec": "rm src/constructs/ManagedPolicies.ts || true\nrm src/constructs/Actions.ts || true\nts-node ./src/bin/download-actions-json.ts\nts-node ./src/bin/download-managed-policies-json.ts\nts-node ./src/bin/create-actions-json.ts\nnpx projen eslint\nif [ -f src/constructs/ManagedPolicies.ts ]; then echo \"ManagedPolicies.ts created successfully\"; else echo \"ManagedPolicies.ts not found\"; exit 1; fi\nif [ -f src/constructs/Actions.ts ]; then echo \"Actions.ts created successfully\"; else echo \"Actions.ts not found\"; exit 1; fi"
         }
       ]
     },

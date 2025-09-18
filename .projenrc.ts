@@ -102,10 +102,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
 project.preCompileTask.exec([
   'rm src/constructs/ManagedPolicies.ts || true',
+  'rm src/constructs/Actions.ts || true',
   'ts-node ./src/bin/download-actions-json.ts',
   'ts-node ./src/bin/download-managed-policies-json.ts',
   'ts-node ./src/bin/create-actions-json.ts',
   'npx projen eslint',
+  'if [ -f src/constructs/ManagedPolicies.ts ]; then echo "ManagedPolicies.ts created successfully"; else echo "ManagedPolicies.ts not found"; exit 1; fi',
+  'if [ -f src/constructs/Actions.ts ]; then echo "Actions.ts created successfully"; else echo "Actions.ts not found"; exit 1; fi',
 ].join('\n'));
 
 // Add Yarn resolutions to ensure patched transitive versions

@@ -6,11 +6,11 @@ import * as readline from 'readline';
 let output: { [key: string]: { [key: string]: string } } = {};
 
 // Generate the platform-specific path to your text file
-let filePath = path.join(__dirname, '..', '..', 'methods_list.txt');
+let filePath = path.join('methods_list.txt');
 
 const readInterface = readline.createInterface({
   input: fs.createReadStream(filePath),
-  output: process.stdout,
+  // output: process.stdout,
 });
 
 readInterface.on('line', (line) => {
@@ -32,7 +32,7 @@ readInterface.on('line', (line) => {
 });
 
 readInterface.on('close', () => {
-  writeToFileAsTsObject(output, path.join(__dirname, '..', 'constructs', 'Actions.ts'));
+  writeToFileAsTsObject(output, path.join('src', 'constructs', 'Actions.ts'));
 });
 
 
@@ -45,6 +45,7 @@ const writeToFileAsTsObject = (data: any, filename: string) => {
     const tsData = `export const Actions = ${dataAsString};\n`;
 
     // Write data to file
+    console.log(`Writing actions data to file: ${filename}`);
     fs.writeFileSync(filename, tsData, 'utf8');
   } catch (error) {
     console.log(`Error writing to file: ${filename}`);
