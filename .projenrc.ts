@@ -101,6 +101,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
 
 project.preCompileTask.exec([
+  'rm src/constructs/ManagedPolicies.ts || true',
   'ts-node ./src/bin/download-actions-json.ts',
   'ts-node ./src/bin/download-managed-policies-json.ts',
   'ts-node ./src/bin/create-actions-json.ts',

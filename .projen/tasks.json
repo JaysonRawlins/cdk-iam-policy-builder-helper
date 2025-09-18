@@ -227,7 +227,7 @@
       "description": "Prepare the project for compilation",
       "steps": [
         {
-          "exec": "ts-node ./src/bin/download-actions-json.ts\nts-node ./src/bin/download-managed-policies-json.ts\nts-node ./src/bin/create-actions-json.ts\nnpx projen eslint"
+          "exec": "rm src/constructs/ManagedPolicies.ts || true\nts-node ./src/bin/download-actions-json.ts\nts-node ./src/bin/download-managed-policies-json.ts\nts-node ./src/bin/create-actions-json.ts\nnpx projen eslint"
         }
       ]
     },
