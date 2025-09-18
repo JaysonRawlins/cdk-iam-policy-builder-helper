@@ -45,8 +45,9 @@ async function run() {
       }
     }
   }
-
-  writeToFileAsTsObject(policies, path.join(__dirname, '..', 'constructs', 'ManagedPolicies.ts'));
+  console.log(`Fetched ${Object.keys(policies).length} managed policies.`);
+  const currentDir = path.dirname(__filename);
+  writeToFileAsTsObject(policies, path.join( currentDir, '..', 'constructs', 'ManagedPolicies.ts'));
 }
 
 run().catch(console.error);
