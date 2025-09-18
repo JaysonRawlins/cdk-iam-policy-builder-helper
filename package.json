@@ -64,7 +64,7 @@
     "constructs": "^10.4.2"
   },
   "dependencies": {
-    "@aws-sdk/client-iam": "^3.890.0",
+    "@aws-sdk/client-iam": "^3.891.0",
     "axios": "^1.8.2",
     "constructs": "^10.4.2",
     "jsonc-parser": "^3.3.1",
