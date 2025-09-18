@@ -1359,14 +1359,6 @@ export const ManagedPolicies = {
     PolicyName: 'AWSFMMemberReadOnlyAccess',
     Arn: 'arn:aws:iam::aws:policy/AWSFMMemberReadOnlyAccess',
   },
-  'AWSIoT1ClickReadOnlyAccess': {
-    PolicyName: 'AWSIoT1ClickReadOnlyAccess',
-    Arn: 'arn:aws:iam::aws:policy/AWSIoT1ClickReadOnlyAccess',
-  },
-  'AWSIoT1ClickFullAccess': {
-    PolicyName: 'AWSIoT1ClickFullAccess',
-    Arn: 'arn:aws:iam::aws:policy/AWSIoT1ClickFullAccess',
-  },
   'AmazonEKSClusterPolicy': {
     PolicyName: 'AmazonEKSClusterPolicy',
     Arn: 'arn:aws:iam::aws:policy/AmazonEKSClusterPolicy',
@@ -5554,5 +5546,9 @@ export const ManagedPolicies = {
   'AWSBillingServiceRolePolicy': {
     PolicyName: 'AWSBillingServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSBillingServiceRolePolicy',
+  },
+  'AWSObservabilityAdminLogsCentralizationServiceRolePolicy': {
+    PolicyName: 'AWSObservabilityAdminLogsCentralizationServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSObservabilityAdminLogsCentralizationServiceRolePolicy',
   },
 };

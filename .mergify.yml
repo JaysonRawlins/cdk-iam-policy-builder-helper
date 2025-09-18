@@ -2,15 +2,16 @@ queue_rules:
   - name: default
     update_method: merge
     queue_conditions:
-      - label = automerge
       - -label~=(do-not-merge)
       - status-success=build
       - status-success=build
       - status-success=package-js
       - status-success=package-python
       - status-success=package-go
-      - -author=dependabot[bot]
-      - -author=projenbuildmanager[bot]
+      - or:
+          - author=dependabot[bot]
+          - author=projenbuildmanager[bot]
+          - author=jjrawlins
     merge_method: squash
     commit_message_template: |-
       {{ title }} (#{{ number }})
