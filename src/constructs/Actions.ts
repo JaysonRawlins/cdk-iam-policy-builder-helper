@@ -1816,6 +1816,7 @@ export const Actions = {
     BatchDeleteEvaluationJob: 'bedrock:BatchDeleteEvaluationJob',
     CallWithBearerToken: 'bedrock:CallWithBearerToken',
     CancelAutomatedReasoningPolicyBuildWorkflow: 'bedrock:CancelAutomatedReasoningPolicyBuildWorkflow',
+    CountTokens: 'bedrock:CountTokens',
     CreateAgent: 'bedrock:CreateAgent',
     CreateAgentActionGroup: 'bedrock:CreateAgentActionGroup',
     CreateAgentAlias: 'bedrock:CreateAgentAlias',
