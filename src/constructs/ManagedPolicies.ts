@@ -5551,4 +5551,8 @@ export const ManagedPolicies = {
     PolicyName: 'AWSObservabilityAdminLogsCentralizationServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSObservabilityAdminLogsCentralizationServiceRolePolicy',
   },
+  'BedrockAgentCoreNetworkServiceRolePolicy': {
+    PolicyName: 'BedrockAgentCoreNetworkServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/BedrockAgentCoreNetworkServiceRolePolicy',
+  },
 };
