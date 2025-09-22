@@ -70,10 +70,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   },
   depsUpgrade: true,
-  // publishToNuget: { // Broken for some reason
-  //   packageId: 'jjrawlins.CdkIamPolicyBuilderHelper',
-  //   dotNetNamespace: 'jjrawlins.CdkIamPolicyBuilderHelper',
-  // },
+  publishToNuget: { // Broken for some reason
+    packageId: 'jjrawlins.CdkIamPolicyBuilderHelper',
+    dotNetNamespace: 'jjrawlins.CdkIamPolicyBuilderHelper',
+  },
   publishToPypi: {
     distName: 'jjrawlins-cdk-iam-policy-builder-helper',
     module: 'jjrawlins_cdk_iam_policy_builder_helper',
@@ -111,16 +111,26 @@ const project = new awscdk.AwsCdkConstructLibrary({
 });
 
 
-project.preCompileTask.exec([
-  'rm src/constructs/ManagedPolicies.ts || true',
-  'rm src/constructs/Actions.ts || true',
-  'ts-node ./src/bin/download-actions-json.ts',
-  'ts-node ./src/bin/download-managed-policies-json.ts',
-  'ts-node ./src/bin/create-actions-json.ts',
-  'npx projen eslint',
-  'if [ -f src/constructs/ManagedPolicies.ts ]; then echo "ManagedPolicies.ts created successfully"; else echo "ManagedPolicies.ts not found"; exit 1; fi',
-  'if [ -f src/constructs/Actions.ts ]; then echo "Actions.ts created successfully"; else echo "Actions.ts not found"; exit 1; fi',
-].join('\n'));
+project.addTask('generate:actions', {
+  description: 'Generates the Actions.ts file from the AWS IAM Policy Builder dump.',
+  exec: [
+    'rm src/constructs/Actions.ts || true',
+    'ts-node ./src/bin/download-actions-json.ts',
+    'ts-node ./src/bin/create-actions-json.ts',
+    'npx projen eslint',
+    'if [ -f src/constructs/Actions.ts ]; then echo "Actions.ts created successfully"; else echo "Actions.ts not found"; exit 1; fi',
+  ].join('\n'),
+});
+
+project.addTask('generate:managed-policies', {
+  description: 'Generates the ManagedPolicies.ts file from the AWS IAM Policy Builder dump.',
+  exec: [
+    'rm src/constructs/ManagedPolicies.ts || true',
+    'ts-node ./src/bin/download-managed-policies-json.ts',
+    'npx projen eslint',
+    'if [ -f src/constructs/ManagedPolicies.ts ]; then echo "ManagedPolicies.ts created successfully"; else echo "ManagedPolicies.ts not found"; exit 1; fi',
+  ].join('\n'),
+});
 
 // Add Yarn resolutions to ensure patched transitive versions
 project.package.addField('resolutions', {
