@@ -43,7 +43,8 @@
     "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "aws-cdk-lib": "2.150.0",
+    "aws-cdk": "2.85.0",
+    "aws-cdk-lib": "2.85.0",
     "commit-and-tag-version": "^12",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -60,8 +61,8 @@
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.150.0",
-    "constructs": "^10.4.2"
+    "aws-cdk-lib": "^2.85.0",
+    "constructs": "^10.0.5"
   },
   "dependencies": {
     "@aws-sdk/client-iam": "^3.891.0",
@@ -79,7 +80,9 @@
     "brace-expansion": "1.1.12",
     "form-data": "^4.0.4",
     "@eslint/plugin-kit": "^0.3.4",
-    "eslint-import-resolver-typescript": "^4.4.4"
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "aws-cdk-lib": ">=2.85.0 <3.0.0",
+    "constructs": ">=10.0.0 <11.0.0"
   },
   "keywords": [
     "aws",
@@ -88,7 +91,7 @@
     "iam-policy"
   ],
   "engines": {
-    "node": ">= 22.x"
+    "node": ">= 20.9.0"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",

@@ -9,7 +9,6 @@ queue_rules:
       - status-success=package-python
       - status-success=package-go
       - or:
-          - author=dependabot[bot]
           - author=projenbuildmanager[bot]
           - author=jjrawlins
     merge_method: squash
@@ -18,16 +17,6 @@ queue_rules:
 
       {{ body }}
     autoqueue: true
-pull_request_rules:
-  - name: Automatic Merge Dependebot Prs
-    description: Merge when PR passes all branch protection and has label automerge
-    conditions:
-      - author=dependabot[bot]
-      - -label~=(do-not-merge)
-      - status-success=build
-    actions:
-      merge:
-        method: squash
   - name: Label conflicting pull requests
     description: Add a label to a pull request with conflict to spot it easily
     conditions:

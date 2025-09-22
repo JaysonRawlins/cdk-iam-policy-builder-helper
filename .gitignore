@@ -50,4 +50,5 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+!/.tool-versions
 !/.projenrc.ts
