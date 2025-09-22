@@ -59,6 +59,7 @@
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.114.1",
     "jsii-rosetta": "~5.8.0",
+    "projen": "^0.96.3",
     "ts-jest": "^29.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
@@ -71,8 +72,7 @@
     "@aws-sdk/client-iam": "^3.891.0",
     "axios": "^1.8.2",
     "constructs": "^10.4.2",
-    "jsonc-parser": "^3.3.1",
-    "projen": "^0.96.1"
+    "jsonc-parser": "^3.3.1"
   },
   "bundledDependencies": [
     "@aws-sdk/client-iam",
@@ -157,8 +157,8 @@
         "module": "jjrawlins_cdk_iam_policy_builder_helper"
       },
       "dotnet": {
-        "namespace": "jjrawlins.CdkIamPolicyBuilderHelper",
-        "packageId": "jjrawlins.CdkIamPolicyBuilderHelper"
+        "namespace": "JJRawlins.CdkIamPolicyBuilderHelper",
+        "packageId": "JJRawlins.CdkIamPolicyBuilderHelper"
       },
       "go": {
         "moduleName": "github.com/jaysonrawlins/cdk-iam-policy-builder-helper",

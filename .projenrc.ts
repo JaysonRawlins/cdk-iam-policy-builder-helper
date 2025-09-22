@@ -71,8 +71,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   depsUpgrade: true,
   publishToNuget: { // Broken for some reason
-    packageId: 'jjrawlins.CdkIamPolicyBuilderHelper',
-    dotNetNamespace: 'jjrawlins.CdkIamPolicyBuilderHelper',
+    packageId: 'JJRawlins.CdkIamPolicyBuilderHelper',
+    dotNetNamespace: 'JJRawlins.CdkIamPolicyBuilderHelper',
   },
   publishToPypi: {
     distName: 'jjrawlins-cdk-iam-policy-builder-helper',
@@ -86,7 +86,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'aws-cdk-lib',
   ],
   deps: [
-    'projen',
     'constructs',
     '@aws-sdk/client-iam',
     'axios@^1.8.2',
@@ -97,6 +96,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     `constructs@^${minConstructsVersion}`,
     '@aws-sdk/types',
     '@types/node',
+    'projen',
   ],
   bundledDeps: [
     '@aws-sdk/client-iam',
