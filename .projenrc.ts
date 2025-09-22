@@ -92,7 +92,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'axios@^1.8.2',
   ],
   devDeps: [
-    `aws-cdk@${cdkVersion}`,
+    `aws-cdk@${cdkCliVersion}`,
     `aws-cdk-lib@${cdkVersion}`,
     `constructs@^${minConstructsVersion}`,
     '@aws-sdk/types',
@@ -139,7 +139,7 @@ project.package.addField('resolutions', {
   '@eslint/plugin-kit': '^0.3.4',
   'eslint-import-resolver-typescript': '^4.4.4',
   'aws-cdk-lib': '>=2.85.0 <3.0.0',
-  'constructs': '>=10.0.0 <11.0.0',
+  'constructs': '>=10.0.5 <11.0.0',
 });
 
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.id-token', 'write');
@@ -203,6 +203,10 @@ new TextFile(project, '.tool-versions', {
     'yarn 1.22.22',
   ],
 });
+
+// Projen creates this incorrectly
+// Removing to keep linter happy
+project.compileTask.exec('rm -r tsconfig.json');
 
 project.synth();
 // noop
