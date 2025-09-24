@@ -1,6 +1,7 @@
 queue_rules:
   - name: default
     update_method: rebase
+    update_bot_account: jjrawlins
     queue_conditions:
       - -label~=(do-not-merge)
       - status-success=build
@@ -17,6 +18,7 @@ queue_rules:
       {{ body }}
     autoqueue: true
   - name: Auto-merge dependency upgrade PRs Constructs
+    update_bot_account: jjrawlins
     queue_conditions:
       - head=github-actions/upgrade-main
       - -label~=(do-not-merge)
@@ -30,6 +32,7 @@ queue_rules:
     autoqueue: true
   - name: Auto-merge dependency upgrade PRs CDK Stacks
     update_method: rebase
+    update_bot_account: jjrawlins
     queue_conditions:
       - head=github-actions/upgrade
       - -label~=(do-not-merge)
@@ -41,6 +44,7 @@ queue_rules:
     autoqueue: true
     autosquash: true
   - name: Queue PRs with approved label
+    update_bot_account: jjrawlins
     queue_conditions:
       - label=approved
       - -label~=(do-not-merge)
@@ -55,7 +59,7 @@ queue_rules:
     autosquash: true
 pull_request_rules:
   - name: Automatic merge on approval and passing checks
-    description: 
+    description: Rules for process pull requests
     conditions:
       - "#approved-reviews-by >= 1" 
       - -label~=(do-not-merge)
