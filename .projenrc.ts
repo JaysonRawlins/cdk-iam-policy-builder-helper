@@ -114,21 +114,21 @@ const project = new awscdk.AwsCdkConstructLibrary({
 project.addTask('generate:actions', {
   description: 'Generates the Actions.ts file from the AWS IAM Policy Builder dump.',
   exec: [
-    'rm src/constructs/Actions.ts || true',
-    'ts-node ./src/bin/download-actions-json.ts',
-    'ts-node ./src/bin/create-actions-json.ts',
+    'set -euo pipefail',
+    'ts-node -P tsconfig.dev.json ./src/bin/download-actions-json.ts',
+    'ts-node -P tsconfig.dev.json ./src/bin/create-actions-json.ts',
     'npx projen eslint',
-    'if [ -f src/constructs/Actions.ts ]; then echo "Actions.ts created successfully"; else echo "Actions.ts not found"; exit 1; fi',
+    'echo "Actions.ts created successfully"',
   ].join('\n'),
 });
 
 project.addTask('generate:managed-policies', {
   description: 'Generates the ManagedPolicies.ts file from the AWS IAM Policy Builder dump.',
   exec: [
-    'rm src/constructs/ManagedPolicies.ts || true',
-    'ts-node ./src/bin/download-managed-policies-json.ts',
+    'set -euo pipefail',
+    'ts-node -P tsconfig.dev.json ./src/bin/download-managed-policies-json.ts',
     'npx projen eslint',
-    'if [ -f src/constructs/ManagedPolicies.ts ]; then echo "ManagedPolicies.ts created successfully"; else echo "ManagedPolicies.ts not found"; exit 1; fi',
+    'echo "ManagedPolicies.ts created successfully"',
   ].join('\n'),
 });
 

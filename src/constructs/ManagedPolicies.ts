@@ -5555,4 +5555,16 @@ export const ManagedPolicies = {
     PolicyName: 'BedrockAgentCoreNetworkServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/BedrockAgentCoreNetworkServiceRolePolicy',
   },
+  'AmazonECSInfrastructureRolePolicyForManagedInstances': {
+    PolicyName: 'AmazonECSInfrastructureRolePolicyForManagedInstances',
+    Arn: 'arn:aws:iam::aws:policy/AmazonECSInfrastructureRolePolicyForManagedInstances',
+  },
+  'AmazonECSInstanceRolePolicyForManagedInstances': {
+    PolicyName: 'AmazonECSInstanceRolePolicyForManagedInstances',
+    Arn: 'arn:aws:iam::aws:policy/AmazonECSInstanceRolePolicyForManagedInstances',
+  },
+  'AWSTransformApplicationECSDeploymentPolicy': {
+    PolicyName: 'AWSTransformApplicationECSDeploymentPolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AWSTransformApplicationECSDeploymentPolicy',
+  },
 };

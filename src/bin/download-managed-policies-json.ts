@@ -22,6 +22,7 @@ const writeToFileAsTsObject = (data: any, filename: string) => {
   } catch (error) {
     console.log(`Error writing to file: ${filename}`);
     console.error(error);
+    process.exit(1);
   }
 };
 
@@ -49,4 +50,7 @@ async function run() {
   writeToFileAsTsObject(policies, path.join('src', 'constructs', 'ManagedPolicies.ts'));
 }
 
-run().catch(console.error);
+run().catch((err) => {
+  console.error('Error running download-managed-policies-json:', err);
+  process.exit(1);
+});

@@ -35,6 +35,10 @@ readInterface.on('close', () => {
   writeToFileAsTsObject(output, path.join('src', 'constructs', 'Actions.ts'));
 });
 
+readInterface.on('error', (err) => {
+  console.error('Error reading methods_list.txt:', err);
+  process.exit(1);
+});
 
 const writeToFileAsTsObject = (data: any, filename: string) => {
   try {
@@ -50,6 +54,7 @@ const writeToFileAsTsObject = (data: any, filename: string) => {
   } catch (error) {
     console.log(`Error writing to file: ${filename}`);
     console.error(error);
+    process.exit(1);
   }
 };
 

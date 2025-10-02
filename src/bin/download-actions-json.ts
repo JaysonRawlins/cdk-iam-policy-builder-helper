@@ -19,8 +19,8 @@ async function fetchData() {
 
     const index = response.data.indexOf('=');
     if (index === -1) {
-      console.error('Unexpected data format. \'=\' not found');
-      return;
+      console.error("Unexpected data format. '=' not found");
+      process.exit(1);
     }
 
     const data = response.data.slice(index + 1);
@@ -30,10 +30,8 @@ async function fetchData() {
       jsonData = parse(data);
     } catch (error) {
       console.error('Error parsing JSONC data:', error);
-      return;
+      process.exit(1);
     }
-
-    // console.log(jsonData.serviceMap);
 
     const methods: string[] = [];
 
@@ -41,7 +39,6 @@ async function fetchData() {
       let prefix = jsonData.serviceMap[service].StringPrefix;
       jsonData.serviceMap[service].Actions.forEach((action: string) => {
         methods.push(`${prefix}:${action}`);
-        // console.log(`${prefix}:${action}`);
       });
     }
 
@@ -52,7 +49,11 @@ async function fetchData() {
     fs.writeFileSync('methods_list.txt', uniqueMethods.join('\n'));
   } catch (error) {
     console.error('Error during fetchData:', error);
+    process.exit(1);
   }
 }
 
-void fetchData().then().catch();
+fetchData().catch((err) => {
+  console.error('Unhandled error in fetchData:', err);
+  process.exit(1);
+});

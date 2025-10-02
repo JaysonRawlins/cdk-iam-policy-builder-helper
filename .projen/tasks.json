@@ -143,7 +143,7 @@
       "description": "Generates the Actions.ts file from the AWS IAM Policy Builder dump.",
       "steps": [
         {
-          "exec": "rm src/constructs/Actions.ts || true\nts-node ./src/bin/download-actions-json.ts\nts-node ./src/bin/create-actions-json.ts\nnpx projen eslint\nif [ -f src/constructs/Actions.ts ]; then echo \"Actions.ts created successfully\"; else echo \"Actions.ts not found\"; exit 1; fi"
+          "exec": "set -euo pipefail\nts-node -P tsconfig.dev.json ./src/bin/download-actions-json.ts\nts-node -P tsconfig.dev.json ./src/bin/create-actions-json.ts\nnpx projen eslint\necho \"Actions.ts created successfully\""
         }
       ]
     },
@@ -152,7 +152,7 @@
       "description": "Generates the ManagedPolicies.ts file from the AWS IAM Policy Builder dump.",
       "steps": [
         {
-          "exec": "rm src/constructs/ManagedPolicies.ts || true\nts-node ./src/bin/download-managed-policies-json.ts\nnpx projen eslint\nif [ -f src/constructs/ManagedPolicies.ts ]; then echo \"ManagedPolicies.ts created successfully\"; else echo \"ManagedPolicies.ts not found\"; exit 1; fi"
+          "exec": "set -euo pipefail\nts-node -P tsconfig.dev.json ./src/bin/download-managed-policies-json.ts\nnpx projen eslint\necho \"ManagedPolicies.ts created successfully\""
         }
       ]
     },
