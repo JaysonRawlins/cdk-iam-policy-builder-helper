@@ -114,7 +114,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 project.addTask('generate:actions', {
   description: 'Generates the Actions.ts file from the AWS IAM Policy Builder dump.',
   exec: [
-    'set -euo pipefail',
+    'set -eu',
     'ts-node -P tsconfig.dev.json ./src/bin/download-actions-json.ts',
     'ts-node -P tsconfig.dev.json ./src/bin/create-actions-json.ts',
     'npx projen eslint',
@@ -125,7 +125,7 @@ project.addTask('generate:actions', {
 project.addTask('generate:managed-policies', {
   description: 'Generates the ManagedPolicies.ts file from the AWS IAM Policy Builder dump.',
   exec: [
-    'set -euo pipefail',
+    'set -eu',
     'ts-node -P tsconfig.dev.json ./src/bin/download-managed-policies-json.ts',
     'npx projen eslint',
     'echo "ManagedPolicies.ts created successfully"',
