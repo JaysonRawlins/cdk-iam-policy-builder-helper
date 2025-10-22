@@ -132,6 +132,10 @@ project.addTask('generate:managed-policies', {
   ].join('\n'),
 });
 
+// Add generation tasks to the pre-compile step
+project.preCompileTask.spawn(project.tasks.tryFind('generate:actions')!);
+project.preCompileTask.spawn(project.tasks.tryFind('generate:managed-policies')!);
+
 // Add Yarn resolutions to ensure patched transitive versions
 project.package.addField('resolutions', {
   'brace-expansion': '1.1.12',

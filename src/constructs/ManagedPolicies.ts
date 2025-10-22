@@ -5567,4 +5567,28 @@ export const ManagedPolicies = {
     PolicyName: 'AWSTransformApplicationECSDeploymentPolicy',
     Arn: 'arn:aws:iam::aws:policy/service-role/AWSTransformApplicationECSDeploymentPolicy',
   },
+  'AWSControlTowerIdentityCenterManagementPolicy': {
+    PolicyName: 'AWSControlTowerIdentityCenterManagementPolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AWSControlTowerIdentityCenterManagementPolicy',
+  },
+  'AWSEC2CapacityManagerServiceRolePolicy': {
+    PolicyName: 'AWSEC2CapacityManagerServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSEC2CapacityManagerServiceRolePolicy',
+  },
+  'AIOpsAssistantIncidentReportPolicy': {
+    PolicyName: 'AIOpsAssistantIncidentReportPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AIOpsAssistantIncidentReportPolicy',
+  },
+  'BedrockAgentCoreRuntimeIdentityServiceRolePolicy': {
+    PolicyName: 'BedrockAgentCoreRuntimeIdentityServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/BedrockAgentCoreRuntimeIdentityServiceRolePolicy',
+  },
+  'DynamoDBGlobalTableSettingsManagementServiceRolePolicy': {
+    PolicyName: 'DynamoDBGlobalTableSettingsManagementServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/DynamoDBGlobalTableSettingsManagementServiceRolePolicy',
+  },
+  'RTBFabricServiceRolePolicy': {
+    PolicyName: 'RTBFabricServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/RTBFabricServiceRolePolicy',
+  },
 };

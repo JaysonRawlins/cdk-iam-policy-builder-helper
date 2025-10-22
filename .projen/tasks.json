@@ -129,8 +129,7 @@
       "name": "eslint",
       "description": "Runs eslint against the codebase",
       "env": {
-        "ESLINT_USE_FLAT_CONFIG": "false",
-        "NODE_NO_WARNINGS": "1"
+        "ESLINT_USE_FLAT_CONFIG": "false"
       },
       "steps": [
         {
@@ -258,7 +257,15 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation"
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "spawn": "generate:actions"
+        },
+        {
+          "spawn": "generate:managed-policies"
+        }
+      ]
     },
     "release": {
       "name": "release",
