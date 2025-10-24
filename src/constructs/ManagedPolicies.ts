@@ -5591,4 +5591,8 @@ export const ManagedPolicies = {
     PolicyName: 'RTBFabricServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/RTBFabricServiceRolePolicy',
   },
+  'SageMakerStudioEMRContainersSystemNamespaceRolePolicy': {
+    PolicyName: 'SageMakerStudioEMRContainersSystemNamespaceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioEMRContainersSystemNamespaceRolePolicy',
+  },
 };
