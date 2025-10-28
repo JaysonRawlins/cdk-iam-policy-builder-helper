@@ -1323,6 +1323,7 @@ export const Actions = {
     ExecutePolicy: 'autoscaling:ExecutePolicy',
     ExitStandby: 'autoscaling:ExitStandby',
     GetPredictiveScalingForecast: 'autoscaling:GetPredictiveScalingForecast',
+    LaunchInstances: 'autoscaling:LaunchInstances',
     PutLifecycleHook: 'autoscaling:PutLifecycleHook',
     PutNotificationConfiguration: 'autoscaling:PutNotificationConfiguration',
     PutScalingPolicy: 'autoscaling:PutScalingPolicy',
