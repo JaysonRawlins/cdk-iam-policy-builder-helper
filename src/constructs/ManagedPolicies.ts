@@ -5595,4 +5595,8 @@ export const ManagedPolicies = {
     PolicyName: 'SageMakerStudioEMRContainersSystemNamespaceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/service-role/SageMakerStudioEMRContainersSystemNamespaceRolePolicy',
   },
+  'AmazonApplicationRecoveryControllerRegionSwitchPlanExecutionPolicy': {
+    PolicyName: 'AmazonApplicationRecoveryControllerRegionSwitchPlanExecutionPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonApplicationRecoveryControllerRegionSwitchPlanExecutionPolicy',
+  },
 };
