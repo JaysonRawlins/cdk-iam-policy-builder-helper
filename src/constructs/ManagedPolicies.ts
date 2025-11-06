@@ -5599,4 +5599,16 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonApplicationRecoveryControllerRegionSwitchPlanExecutionPolicy',
     Arn: 'arn:aws:iam::aws:policy/AmazonApplicationRecoveryControllerRegionSwitchPlanExecutionPolicy',
   },
+  'AWSApplicationMigrationNetworkMigrationCustomResource': {
+    PolicyName: 'AWSApplicationMigrationNetworkMigrationCustomResource',
+    Arn: 'arn:aws:iam::aws:policy/AWSApplicationMigrationNetworkMigrationCustomResource',
+  },
+  'AWSSecretsManagerClientReadOnlyAccess': {
+    PolicyName: 'AWSSecretsManagerClientReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSSecretsManagerClientReadOnlyAccess',
+  },
+  'AWSControlTowerCloudTrailRolePolicy': {
+    PolicyName: 'AWSControlTowerCloudTrailRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AWSControlTowerCloudTrailRolePolicy',
+  },
 };
