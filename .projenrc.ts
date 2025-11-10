@@ -1,35 +1,37 @@
-import { awscdk, TextFile } from 'projen';
+import { awscdk, DependencyType, TextFile } from 'projen';
 import { GithubCredentials } from 'projen/lib/github';
 import { NpmAccess } from 'projen/lib/javascript';
 
 const cdkCliVersion = '2.1029.2';
 const minNodeVersion = '20.9.0';
-const jsiiVersion = '~5.8.0';
-const cdkVersion = '2.85.0'; // Required
-const projenVersion = '^0.95.4'; // Does not affect consumers of the library
-const minConstructsVersion = '10.0.0'; // Minimum version to support CDK v2
+const jsiiVersion = '^5.8.22';
+const cdkVersion = '2.85.0'; // Minimum CDK Version Required
+const minProjenVersion = '0.98.10'; // Does not affect consumers of the library
+const minConstructsVersion = '10.0.5'; // Minimum version to support CDK v2 and does affect consumers of the library
+const devConstructsVersion = '10.0.5'; // Pin for local dev/build to avoid jsii type conflicts
+const configureAwsCredentialsVersion = 'v5';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Jayson Rawlins',
-  authorAddress: 'JaysonJ.Rawlins@gmail.com',
   description: 'A CDK construct that helps build IAM policies using the AWS IAM Policy Builder dump. Normally it is better to use cdk-iam-floyd, However, I found that cdk-iam-floyd currently is not jsii compliant so I wasn\'t able to use it in my jsii compliant projects in languages that are not typescript or python.',
+  authorAddress: 'JaysonJ.Rawlins@gmail.com',
   keywords: [
     'aws',
     'cdk',
     'iam-policy',
     'iam-actions',
   ],
+  packageName: '@jjrawlins/cdk-iam-policy-builder-helper',
   cdkVersion: cdkVersion,
   cdkCliVersion: cdkCliVersion,
-  projenVersion: projenVersion,
-  projenDevDependency: false,
+  projenVersion: `^${minProjenVersion}`,
   defaultReleaseBranch: 'main',
-  minNodeVersion: minNodeVersion,
+  license: 'Apache-2.0',
   jsiiVersion: jsiiVersion,
   name: '@jjrawlins/cdk-iam-policy-builder-helper',
   workflowBootstrapSteps: [
     {
       name: 'configure aws credentials',
-      uses: 'aws-actions/configure-aws-credentials@v4',
+      uses: `aws-actions/configure-aws-credentials@${configureAwsCredentialsVersion}`,
       with: {
         'role-to-assume': '${{ secrets.AWS_GITHUB_OIDC_ROLE }}',
         'role-duration-seconds': 900,
@@ -80,13 +82,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   publishToGo: {
     moduleName: 'github.com/jaysonrawlins/cdk-iam-policy-builder-helper',
-    packageName: 'cdk-iam-policy-builder-helper',
+    packageName: 'cdkiampolicybuilderhelper',
   },
   peerDeps: [
-    'aws-cdk-lib',
+    `aws-cdk-lib@>=${cdkVersion} <3.0.0`,
+    `constructs@>=${minConstructsVersion} <11.0.0`,
   ],
   deps: [
-    'constructs',
     '@aws-sdk/client-iam',
     'axios@^1.8.2',
   ],
@@ -97,6 +99,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@aws-sdk/types',
     '@types/node',
     'projen',
+    'jsii-docgen@^11',
   ],
   bundledDeps: [
     '@aws-sdk/client-iam',
@@ -142,9 +145,15 @@ project.package.addField('resolutions', {
   'form-data': '^4.0.4',
   '@eslint/plugin-kit': '^0.3.4',
   'eslint-import-resolver-typescript': '^4.4.4',
-  'aws-cdk-lib': '>=2.85.0 <3.0.0',
-  'constructs': '>=10.0.5 <11.0.0',
+  'aws-cdk-lib': `>=${cdkVersion} <3.0.0`,
+  // Pin constructs for local dev/build to a single version to avoid jsii conflicts
+  'constructs': devConstructsVersion,
+  'projen': `>=${minProjenVersion} <1.0.0`,
 });
+
+// Ensure 'constructs' is only a peer dependency (avoid duplicates that cause jsii conflicts)
+project.deps.removeDependency('constructs');
+project.deps.addDependency(`constructs@>=${minConstructsVersion} <11.0.0`, DependencyType.PEER);
 
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.packages', 'write');

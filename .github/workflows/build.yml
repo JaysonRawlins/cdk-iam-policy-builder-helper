@@ -22,7 +22,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
           role-duration-seconds: 900
@@ -32,7 +32,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: 20.9.0
+          node-version: lts/*
       - name: Install dependencies
         run: yarn install --check-files
       - name: build
@@ -114,7 +114,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 20.9.0
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -124,7 +124,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
           role-duration-seconds: 900
@@ -158,7 +158,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 20.9.0
+          node-version: lts/*
       - uses: actions/setup-python@v6
         with:
           python-version: 3.x
@@ -171,7 +171,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
           role-duration-seconds: 900
@@ -205,7 +205,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 20.9.0
+          node-version: lts/*
       - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 6.x
@@ -218,7 +218,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
           role-duration-seconds: 900
@@ -252,7 +252,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 20.9.0
+          node-version: lts/*
       - uses: actions/setup-go@v6
         with:
           go-version: ^1.18.0
@@ -265,7 +265,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
           role-duration-seconds: 900

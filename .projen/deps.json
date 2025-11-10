@@ -79,16 +79,17 @@
     },
     {
       "name": "jsii-rosetta",
-      "version": "~5.8.0",
+      "version": "^5.8.22",
       "type": "build"
     },
     {
       "name": "jsii",
-      "version": "~5.8.0",
+      "version": "^5.8.22",
       "type": "build"
     },
     {
       "name": "projen",
+      "version": "^0.98.10",
       "type": "build"
     },
     {
@@ -122,7 +123,7 @@
     },
     {
       "name": "constructs",
-      "version": "^10.0.5",
+      "version": ">=10.0.5 <11.0.0",
       "type": "peer"
     },
     {
@@ -132,10 +133,6 @@
     {
       "name": "axios",
       "version": "^1.8.2",
-      "type": "runtime"
-    },
-    {
-      "name": "constructs",
       "type": "runtime"
     }
   ],
