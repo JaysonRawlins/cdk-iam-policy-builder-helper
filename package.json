@@ -49,16 +49,17 @@
     "aws-cdk": "2.1029.2",
     "aws-cdk-lib": "2.85.0",
     "commit-and-tag-version": "^12",
+    "constructs": "10.0.5",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "jest": "^29.7.0",
     "jest-junit": "^16",
-    "jsii": "~5.8.0",
+    "jsii": "^5.8.22",
     "jsii-diff": "^1.118.0",
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.118.0",
-    "jsii-rosetta": "~5.8.0",
+    "jsii-rosetta": "^5.8.22",
     "projen": "^0.98.10",
     "ts-jest": "^29.4.5",
     "ts-node": "^10.9.2",
@@ -66,12 +67,11 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.85.0",
-    "constructs": "^10.0.5"
+    "constructs": ">=10.0.5 <11.0.0"
   },
   "dependencies": {
     "@aws-sdk/client-iam": "^3.927.0",
     "axios": "^1.8.2",
-    "constructs": "^10.4.2",
     "jsonc-parser": "^3.3.1"
   },
   "bundledDependencies": [
@@ -85,7 +85,8 @@
     "@eslint/plugin-kit": "^0.3.4",
     "eslint-import-resolver-typescript": "^4.4.4",
     "aws-cdk-lib": ">=2.85.0 <3.0.0",
-    "constructs": ">=10.0.5 <11.0.0"
+    "constructs": "10.0.5",
+    "projen": ">=0.98.10 <1.0.0"
   },
   "keywords": [
     "aws",
@@ -93,9 +94,6 @@
     "iam-actions",
     "iam-policy"
   ],
-  "engines": {
-    "node": ">= 20.9.0"
-  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -162,7 +160,7 @@
       },
       "go": {
         "moduleName": "github.com/jaysonrawlins/cdk-iam-policy-builder-helper",
-        "packageName": "cdk-iam-policy-builder-helper"
+        "packageName": "cdkiampolicybuilderhelper"
       }
     },
     "tsc": {
