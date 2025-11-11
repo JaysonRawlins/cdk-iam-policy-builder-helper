@@ -5611,4 +5611,8 @@ export const ManagedPolicies = {
     PolicyName: 'AWSControlTowerCloudTrailRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/service-role/AWSControlTowerCloudTrailRolePolicy',
   },
+  'AWSApplicationMigrationNetworkMigrationMultiAccount': {
+    PolicyName: 'AWSApplicationMigrationNetworkMigrationMultiAccount',
+    Arn: 'arn:aws:iam::aws:policy/AWSApplicationMigrationNetworkMigrationMultiAccount',
+  },
 };

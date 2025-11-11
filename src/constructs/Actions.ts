@@ -10688,6 +10688,7 @@ export const Actions = {
     UpdateConfiguration: 'kafka:UpdateConfiguration',
     UpdateConnectivity: 'kafka:UpdateConnectivity',
     UpdateMonitoring: 'kafka:UpdateMonitoring',
+    UpdateRebalancing: 'kafka:UpdateRebalancing',
     UpdateReplicationInfo: 'kafka:UpdateReplicationInfo',
     UpdateSecurity: 'kafka:UpdateSecurity',
     UpdateStorage: 'kafka:UpdateStorage',
