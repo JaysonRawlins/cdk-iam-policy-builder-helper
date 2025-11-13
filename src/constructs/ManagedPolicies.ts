@@ -5615,4 +5615,8 @@ export const ManagedPolicies = {
     PolicyName: 'AWSApplicationMigrationNetworkMigrationMultiAccount',
     Arn: 'arn:aws:iam::aws:policy/AWSApplicationMigrationNetworkMigrationMultiAccount',
   },
+  'AmazonECSInfrastructureRoleforExpressGatewayServices': {
+    PolicyName: 'AmazonECSInfrastructureRoleforExpressGatewayServices',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AmazonECSInfrastructureRoleforExpressGatewayServices',
+  },
 };
