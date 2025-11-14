@@ -5619,4 +5619,12 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonECSInfrastructureRoleforExpressGatewayServices',
     Arn: 'arn:aws:iam::aws:policy/service-role/AmazonECSInfrastructureRoleforExpressGatewayServices',
   },
+  'AWSEC2SqlHaServiceRolePolicy': {
+    PolicyName: 'AWSEC2SqlHaServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSEC2SqlHaServiceRolePolicy',
+  },
+  'AWSEC2SqlHaInstancePolicy': {
+    PolicyName: 'AWSEC2SqlHaInstancePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSEC2SqlHaInstancePolicy',
+  },
 };
