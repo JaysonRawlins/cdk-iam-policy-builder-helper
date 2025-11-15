@@ -5627,4 +5627,12 @@ export const ManagedPolicies = {
     PolicyName: 'AWSEC2SqlHaInstancePolicy',
     Arn: 'arn:aws:iam::aws:policy/AWSEC2SqlHaInstancePolicy',
   },
+  'AWSNATGatewayServiceRolePolicy': {
+    PolicyName: 'AWSNATGatewayServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSNATGatewayServiceRolePolicy',
+  },
+  'AmazonAthenaServiceRolePolicy': {
+    PolicyName: 'AmazonAthenaServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonAthenaServiceRolePolicy',
+  },
 };
