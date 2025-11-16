@@ -5635,4 +5635,12 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonAthenaServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonAthenaServiceRolePolicy',
   },
+  'ComputeOptimizerAutomationServiceRolePolicy': {
+    PolicyName: 'ComputeOptimizerAutomationServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/ComputeOptimizerAutomationServiceRolePolicy',
+  },
+  'AmazonMWAAServerlessServiceRolePolicy': {
+    PolicyName: 'AmazonMWAAServerlessServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonMWAAServerlessServiceRolePolicy',
+  },
 };
