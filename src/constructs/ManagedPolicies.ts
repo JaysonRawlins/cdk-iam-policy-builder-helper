@@ -5643,4 +5643,24 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonMWAAServerlessServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonMWAAServerlessServiceRolePolicy',
   },
+  'AmazonSageMakerSpacesRouterPolicy': {
+    PolicyName: 'AmazonSageMakerSpacesRouterPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerSpacesRouterPolicy',
+  },
+  'AmazonSageMakerSpacesControllerPolicy': {
+    PolicyName: 'AmazonSageMakerSpacesControllerPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerSpacesControllerPolicy',
+  },
+  'AWSPartnerCentralChannelHandshakeApprovalManagement': {
+    PolicyName: 'AWSPartnerCentralChannelHandshakeApprovalManagement',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerCentralChannelHandshakeApprovalManagement',
+  },
+  'AWSPartnerCentralChannelManagement': {
+    PolicyName: 'AWSPartnerCentralChannelManagement',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerCentralChannelManagement',
+  },
+  'SignInLocalDevelopmentAccess': {
+    PolicyName: 'SignInLocalDevelopmentAccess',
+    Arn: 'arn:aws:iam::aws:policy/SignInLocalDevelopmentAccess',
+  },
 };
