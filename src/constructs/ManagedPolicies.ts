@@ -5663,4 +5663,16 @@ export const ManagedPolicies = {
     PolicyName: 'SignInLocalDevelopmentAccess',
     Arn: 'arn:aws:iam::aws:policy/SignInLocalDevelopmentAccess',
   },
+  'AWSBackupServiceRolePolicyForScans': {
+    PolicyName: 'AWSBackupServiceRolePolicyForScans',
+    Arn: 'arn:aws:iam::aws:policy/AWSBackupServiceRolePolicyForScans',
+  },
+  'AWSBackupGuardDutyRolePolicyForScans': {
+    PolicyName: 'AWSBackupGuardDutyRolePolicyForScans',
+    Arn: 'arn:aws:iam::aws:policy/AWSBackupGuardDutyRolePolicyForScans',
+  },
+  'AmazonEKSMCPReadOnlyAccess': {
+    PolicyName: 'AmazonEKSMCPReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonEKSMCPReadOnlyAccess',
+  },
 };
