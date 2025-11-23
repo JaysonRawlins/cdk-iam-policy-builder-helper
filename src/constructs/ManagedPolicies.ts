@@ -5675,4 +5675,16 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonEKSMCPReadOnlyAccess',
     Arn: 'arn:aws:iam::aws:policy/AmazonEKSMCPReadOnlyAccess',
   },
+  'AWSMcpServiceActionsFullAccess': {
+    PolicyName: 'AWSMcpServiceActionsFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSMcpServiceActionsFullAccess',
+  },
+  'AmazonRedshiftFederatedAuthorization': {
+    PolicyName: 'AmazonRedshiftFederatedAuthorization',
+    Arn: 'arn:aws:iam::aws:policy/AmazonRedshiftFederatedAuthorization',
+  },
+  'AWSIdentityCenterExternalManagementPolicy': {
+    PolicyName: 'AWSIdentityCenterExternalManagementPolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AWSIdentityCenterExternalManagementPolicy',
+  },
 };
