@@ -5687,4 +5687,8 @@ export const ManagedPolicies = {
     PolicyName: 'AWSIdentityCenterExternalManagementPolicy',
     Arn: 'arn:aws:iam::aws:policy/service-role/AWSIdentityCenterExternalManagementPolicy',
   },
+  'NovaActServiceRolePolicy': {
+    PolicyName: 'NovaActServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/NovaActServiceRolePolicy',
+  },
 };

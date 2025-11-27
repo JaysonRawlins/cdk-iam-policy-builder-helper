@@ -16051,6 +16051,7 @@ export const Actions = {
     TestDNSAnswer: 'route53:TestDNSAnswer',
     UpdateHealthCheck: 'route53:UpdateHealthCheck',
     UpdateHostedZoneComment: 'route53:UpdateHostedZoneComment',
+    UpdateHostedZoneFeatures: 'route53:UpdateHostedZoneFeatures',
     UpdateTrafficPolicyComment: 'route53:UpdateTrafficPolicyComment',
     UpdateTrafficPolicyInstance: 'route53:UpdateTrafficPolicyInstance',
   },
