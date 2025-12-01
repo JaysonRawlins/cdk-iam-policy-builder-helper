@@ -5691,4 +5691,16 @@ export const ManagedPolicies = {
     PolicyName: 'NovaActServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/NovaActServiceRolePolicy',
   },
+  'AWSLambdaServiceRolePolicy': {
+    PolicyName: 'AWSLambdaServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSLambdaServiceRolePolicy',
+  },
+  'AWSLambdaManagedEC2ResourceOperator': {
+    PolicyName: 'AWSLambdaManagedEC2ResourceOperator',
+    Arn: 'arn:aws:iam::aws:policy/AWSLambdaManagedEC2ResourceOperator',
+  },
+  'AWSPartnerCentralMarketingManagement': {
+    PolicyName: 'AWSPartnerCentralMarketingManagement',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerCentralMarketingManagement',
+  },
 };
