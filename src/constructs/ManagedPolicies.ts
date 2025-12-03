@@ -5703,4 +5703,12 @@ export const ManagedPolicies = {
     PolicyName: 'AWSPartnerCentralMarketingManagement',
     Arn: 'arn:aws:iam::aws:policy/AWSPartnerCentralMarketingManagement',
   },
+  'SecurityAgentWebAppAPIPolicy': {
+    PolicyName: 'SecurityAgentWebAppAPIPolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/SecurityAgentWebAppAPIPolicy',
+  },
+  'AWSLambdaBasicDurableExecutionRolePolicy': {
+    PolicyName: 'AWSLambdaBasicDurableExecutionRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicDurableExecutionRolePolicy',
+  },
 };
