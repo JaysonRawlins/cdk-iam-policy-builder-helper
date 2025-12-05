@@ -1975,6 +1975,15 @@ export const Actions = {
     UpdatePolicyEngine: 'bedrock-agentcore:UpdatePolicyEngine',
     UpdateWorkloadIdentity: 'bedrock-agentcore:UpdateWorkloadIdentity',
   },
+  'bedrock-mantle': {
+    CallWithBearerToken: 'bedrock-mantle:CallWithBearerToken',
+    CancelInference: 'bedrock-mantle:CancelInference',
+    CreateInference: 'bedrock-mantle:CreateInference',
+    DeleteInference: 'bedrock-mantle:DeleteInference',
+    GetInference: 'bedrock-mantle:GetInference',
+    GetModel: 'bedrock-mantle:GetModel',
+    ListModels: 'bedrock-mantle:ListModels',
+  },
   'bedrock': {
     AllowVendedLogDeliveryForResource: 'bedrock:AllowVendedLogDeliveryForResource',
     ApplyGuardrail: 'bedrock:ApplyGuardrail',

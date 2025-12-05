@@ -5711,4 +5711,16 @@ export const ManagedPolicies = {
     PolicyName: 'AWSLambdaBasicDurableExecutionRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicDurableExecutionRolePolicy',
   },
+  'AmazonBedrockMantleInferenceAccess': {
+    PolicyName: 'AmazonBedrockMantleInferenceAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonBedrockMantleInferenceAccess',
+  },
+  'AmazonBedrockMantleFullAccess': {
+    PolicyName: 'AmazonBedrockMantleFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonBedrockMantleFullAccess',
+  },
+  'AmazonBedrockMantleReadOnly': {
+    PolicyName: 'AmazonBedrockMantleReadOnly',
+    Arn: 'arn:aws:iam::aws:policy/AmazonBedrockMantleReadOnly',
+  },
 };
