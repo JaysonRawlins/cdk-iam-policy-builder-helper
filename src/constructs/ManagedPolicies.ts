@@ -5723,4 +5723,16 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonBedrockMantleReadOnly',
     Arn: 'arn:aws:iam::aws:policy/AmazonBedrockMantleReadOnly',
   },
+  'AWSTransformCustomFullAccess': {
+    PolicyName: 'AWSTransformCustomFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSTransformCustomFullAccess',
+  },
+  'AWSTransformCustomExecuteTransformations': {
+    PolicyName: 'AWSTransformCustomExecuteTransformations',
+    Arn: 'arn:aws:iam::aws:policy/AWSTransformCustomExecuteTransformations',
+  },
+  'AWSTransformCustomManageTransformations': {
+    PolicyName: 'AWSTransformCustomManageTransformations',
+    Arn: 'arn:aws:iam::aws:policy/AWSTransformCustomManageTransformations',
+  },
 };
