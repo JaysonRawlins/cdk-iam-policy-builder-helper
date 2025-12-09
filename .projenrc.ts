@@ -1,5 +1,5 @@
 import { awscdk, DependencyType, TextFile } from 'projen';
-import { GithubCredentials } from 'projen/lib/github';
+import { GithubCredentials, workflows } from 'projen/lib/github';
 import { NpmAccess } from 'projen/lib/javascript';
 
 const cdkCliVersion = '2.1029.2';
@@ -135,9 +135,169 @@ project.addTask('generate:managed-policies', {
   ].join('\n'),
 });
 
-// Add generation tasks to the pre-compile step
-project.preCompileTask.spawn(project.tasks.tryFind('generate:actions')!);
-project.preCompileTask.spawn(project.tasks.tryFind('generate:managed-policies')!);
+// Create a new workflow for generating IAM definitions (runs separately from release)
+const generateIamWorkflow = project.github!.addWorkflow('generate-iam-definitions');
+generateIamWorkflow.on({
+  workflowDispatch: {},
+  schedule: [{ cron: '0 6 * * 1' }], // Weekly on Monday at 6am UTC
+});
+
+generateIamWorkflow.addJobs({
+  generate: {
+    name: 'Generate IAM Definitions',
+    runsOn: ['ubuntu-latest'],
+    permissions: {
+      contents: workflows.JobPermission.WRITE,
+      idToken: workflows.JobPermission.WRITE,
+      packages: workflows.JobPermission.WRITE,
+      pullRequests: workflows.JobPermission.WRITE,
+    },
+    outputs: {
+      patch_created: { outputName: 'patch_created', stepId: 'create_patch' },
+    },
+    steps: [
+      {
+        name: 'Checkout',
+        uses: 'actions/checkout@v5',
+        with: { ref: 'main' },
+      },
+      {
+        name: 'configure aws credentials',
+        uses: `aws-actions/configure-aws-credentials@${configureAwsCredentialsVersion}`,
+        with: {
+          'role-to-assume': '${{ secrets.AWS_GITHUB_OIDC_ROLE }}',
+          'role-duration-seconds': 900,
+          'aws-region': '${{ secrets.AWS_GITHUB_OIDC_REGION }}',
+          'role-skip-session-tagging': true,
+          'role-session-name': 'GitHubActions',
+        },
+      },
+      {
+        name: 'Setup Node.js',
+        uses: 'actions/setup-node@v5',
+        with: { 'node-version': 'lts/*' },
+      },
+      {
+        name: 'Install dependencies',
+        run: 'yarn install --check-files --frozen-lockfile',
+      },
+      {
+        name: 'Generate Actions',
+        run: 'npx projen generate:actions',
+      },
+      {
+        name: 'Generate Managed Policies',
+        run: 'npx projen generate:managed-policies',
+      },
+      {
+        name: 'Find mutations',
+        id: 'create_patch',
+        run: [
+          'git add .',
+          'git diff --staged --patch --exit-code > repo.patch || echo "patch_created=true" >> $GITHUB_OUTPUT',
+        ].join('\n'),
+      },
+      {
+        name: 'Upload patch',
+        if: 'steps.create_patch.outputs.patch_created',
+        uses: 'actions/upload-artifact@v4.6.2',
+        with: {
+          name: 'repo.patch',
+          path: 'repo.patch',
+          overwrite: true,
+        },
+      },
+    ],
+  },
+  pr: {
+    name: 'Create Pull Request',
+    needs: ['generate'],
+    runsOn: ['ubuntu-latest'],
+    permissions: {
+      contents: workflows.JobPermission.WRITE,
+      idToken: workflows.JobPermission.WRITE,
+      packages: workflows.JobPermission.WRITE,
+      pullRequests: workflows.JobPermission.WRITE,
+    },
+    if: '${{ needs.generate.outputs.patch_created }}',
+    steps: [
+      {
+        name: 'Generate token',
+        id: 'generate_token',
+        uses: 'actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5',
+        with: {
+          'app-id': '${{ secrets.PROJEN_APP_ID }}',
+          'private-key': '${{ secrets.PROJEN_APP_PRIVATE_KEY }}',
+        },
+      },
+      {
+        name: 'Checkout',
+        uses: 'actions/checkout@v5',
+        with: { ref: 'main' },
+      },
+      {
+        name: 'Download patch',
+        uses: 'actions/download-artifact@v5',
+        with: {
+          name: 'repo.patch',
+          path: '${{ runner.temp }}',
+        },
+      },
+      {
+        name: 'Apply patch',
+        run: '[ -s ${{ runner.temp }}/repo.patch ] && git apply ${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."',
+      },
+      {
+        name: 'Set git identity',
+        run: [
+          'git config user.name "github-actions[bot]"',
+          'git config user.email "41898282+github-actions[bot]@users.noreply.github.com"',
+        ].join('\n'),
+      },
+      {
+        name: 'Create Pull Request',
+        id: 'create-pr',
+        uses: 'peter-evans/create-pull-request@v7',
+        with: {
+          'token': '${{ steps.generate_token.outputs.token }}',
+          'commit-message': [
+            'chore(deps): update IAM definitions',
+            '',
+            'Updates IAM action and managed policy definitions from AWS.',
+            '',
+            '[Workflow Run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}',
+            '',
+            '------',
+            '',
+            '*Automatically created by projen via the "generate-iam-definitions" workflow*',
+          ].join('\n'),
+          'branch': 'github-actions/generate-iam-definitions',
+          'title': 'chore(deps): update IAM definitions',
+          'body': [
+            'Updates IAM action and managed policy definitions from AWS.',
+            '',
+            '[Workflow Run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}',
+            '',
+            '------',
+            '',
+            '*Automatically created by projen via the "generate-iam-definitions" workflow*',
+          ].join('\n'),
+          'author': 'github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>',
+          'committer': 'github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>',
+          'signoff': true,
+        },
+      },
+      {
+        name: 'Enable auto-merge',
+        if: "steps.create-pr.outputs.pull-request-number != ''",
+        run: 'gh pr merge --auto --squash "${{ steps.create-pr.outputs.pull-request-number }}"',
+        env: {
+          GH_TOKEN: '${{ steps.generate_token.outputs.token }}',
+        },
+      },
+    ],
+  },
+});
 
 // Add Yarn resolutions to ensure patched transitive versions
 project.package.addField('resolutions', {

@@ -50,5 +50,6 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+!/.github/workflows/generate-iam-definitions.yml
 !/.tool-versions
 !/.projenrc.ts
