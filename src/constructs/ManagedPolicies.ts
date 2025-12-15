@@ -5735,4 +5735,20 @@ export const ManagedPolicies = {
     PolicyName: 'AWSTransformCustomManageTransformations',
     Arn: 'arn:aws:iam::aws:policy/AWSTransformCustomManageTransformations',
   },
+  'AccountManagementFromVercel': {
+    PolicyName: 'AccountManagementFromVercel',
+    Arn: 'arn:aws:iam::aws:policy/AccountManagementFromVercel',
+  },
+  'ConsoleFullAccessFromVercel': {
+    PolicyName: 'ConsoleFullAccessFromVercel',
+    Arn: 'arn:aws:iam::aws:policy/ConsoleFullAccessFromVercel',
+  },
+  'ConsoleViewOnlyAccessFromVercel': {
+    PolicyName: 'ConsoleViewOnlyAccessFromVercel',
+    Arn: 'arn:aws:iam::aws:policy/ConsoleViewOnlyAccessFromVercel',
+  },
+  'AWSAccountSettingsManagementRole': {
+    PolicyName: 'AWSAccountSettingsManagementRole',
+    Arn: 'arn:aws:iam::aws:policy/AWSAccountSettingsManagementRole',
+  },
 };
