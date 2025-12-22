@@ -5751,4 +5751,12 @@ export const ManagedPolicies = {
     PolicyName: 'AWSAccountSettingsManagementRole',
     Arn: 'arn:aws:iam::aws:policy/AWSAccountSettingsManagementRole',
   },
+  'AWSUserAttributeCostAllocationPolicy': {
+    PolicyName: 'AWSUserAttributeCostAllocationPolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSUserAttributeCostAllocationPolicy',
+  },
+  'AWSCleanRoomsServiceRolePolicy': {
+    PolicyName: 'AWSCleanRoomsServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSCleanRoomsServiceRolePolicy',
+  },
 };
