@@ -5759,4 +5759,8 @@ export const ManagedPolicies = {
     PolicyName: 'AWSCleanRoomsServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSCleanRoomsServiceRolePolicy',
   },
+  'AmazonSageMakerHyperPodGatedModelAccess': {
+    PolicyName: 'AmazonSageMakerHyperPodGatedModelAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerHyperPodGatedModelAccess',
+  },
 };
