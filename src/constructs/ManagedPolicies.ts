@@ -5763,4 +5763,12 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonSageMakerHyperPodGatedModelAccess',
     Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerHyperPodGatedModelAccess',
   },
+  'AmazonSageMakerHyperPodInferenceAccess': {
+    PolicyName: 'AmazonSageMakerHyperPodInferenceAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerHyperPodInferenceAccess',
+  },
+  'AWSHealthImagingServiceRolePolicy': {
+    PolicyName: 'AWSHealthImagingServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSHealthImagingServiceRolePolicy',
+  },
 };
