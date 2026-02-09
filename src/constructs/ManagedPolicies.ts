@@ -5771,4 +5771,12 @@ export const ManagedPolicies = {
     PolicyName: 'AWSHealthImagingServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSHealthImagingServiceRolePolicy',
   },
+  'SecurityAgentWebAppPolicy': {
+    PolicyName: 'SecurityAgentWebAppPolicy',
+    Arn: 'arn:aws:iam::aws:policy/SecurityAgentWebAppPolicy',
+  },
+  'AWSSecurityAgentWebAppPolicy': {
+    PolicyName: 'AWSSecurityAgentWebAppPolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AWSSecurityAgentWebAppPolicy',
+  },
 };
