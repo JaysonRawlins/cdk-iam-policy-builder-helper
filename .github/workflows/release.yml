@@ -43,7 +43,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 20.x
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
@@ -86,7 +86,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 20.x
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -133,7 +133,7 @@ jobs:
         with:
           path: .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && yarn install --check-files --frozen-lockfile --ignore-engines
       - name: Extract build artifact
         run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
       - name: Move build artifact out of the way
@@ -161,7 +161,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 20.0.0
       - uses: actions/setup-python@v6
         with:
           python-version: 3.x
@@ -212,7 +212,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 20.0.0
       - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 6.x
@@ -262,7 +262,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 20.0.0
       - uses: actions/setup-go@v6
         with:
           go-version: ^1.18.0
