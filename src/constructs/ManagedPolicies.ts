@@ -5779,4 +5779,12 @@ export const ManagedPolicies = {
     PolicyName: 'AWSSecurityAgentWebAppPolicy',
     Arn: 'arn:aws:iam::aws:policy/service-role/AWSSecurityAgentWebAppPolicy',
   },
+  'PartnerCentralIncentiveBenefitManagement': {
+    PolicyName: 'PartnerCentralIncentiveBenefitManagement',
+    Arn: 'arn:aws:iam::aws:policy/PartnerCentralIncentiveBenefitManagement',
+  },
+  'AmazonInspector2ManagedTelemetryPolicy': {
+    PolicyName: 'AmazonInspector2ManagedTelemetryPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AmazonInspector2ManagedTelemetryPolicy',
+  },
 };
