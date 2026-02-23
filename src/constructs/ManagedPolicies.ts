@@ -5787,4 +5787,12 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonInspector2ManagedTelemetryPolicy',
     Arn: 'arn:aws:iam::aws:policy/AmazonInspector2ManagedTelemetryPolicy',
   },
+  'AWSServiceRoleForAIDevOpsPolicy': {
+    PolicyName: 'AWSServiceRoleForAIDevOpsPolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSServiceRoleForAIDevOpsPolicy',
+  },
+  'CloudWatchLogsAPIKeyAccess': {
+    PolicyName: 'CloudWatchLogsAPIKeyAccess',
+    Arn: 'arn:aws:iam::aws:policy/CloudWatchLogsAPIKeyAccess',
+  },
 };
