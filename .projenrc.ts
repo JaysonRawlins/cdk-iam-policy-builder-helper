@@ -343,6 +343,12 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_npm.
 // Add --ignore-engines to yarn install since Node 24 is outside the engines range (20.x)
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_npm.steps.5.run', 'cd .repo && yarn install --check-files --frozen-lockfile --ignore-engines');
 
+// Override node-version for publish jobs that default to minNodeVersion (20.0.0)
+// @eslint/plugin-kit@0.3.5 requires Node ^20.9.0, so 20.0.0 fails yarn install
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_pypi.steps.0.with.node-version', workflowNodeVersion);
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_nuget.steps.0.with.node-version', workflowNodeVersion);
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_golang.steps.0.with.node-version', workflowNodeVersion);
+
 // Add auto-merge step to upgrade-main workflow (step index 6, after PR creation)
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.steps.6', {
   name: 'Enable auto-merge',
