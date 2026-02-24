@@ -314,9 +314,9 @@ project.package.addField('resolutions', {
   'projen': `>=${minProjenVersion} <1.0.0`,
 });
 
-// Allow any Node 20.x for consumers.
+// Allow Node 20+ for consumers (CDK constructs work on any modern Node).
 project.package.addField('engines', {
-  node: `>=${minNodeVersion} <21`,
+  node: `>=${minNodeVersion}`,
 });
 
 // Ensure 'constructs' is only a peer dependency (avoid duplicates that cause jsii conflicts)
