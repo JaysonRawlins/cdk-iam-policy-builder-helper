@@ -1,9 +1,9 @@
 module github.com/jaysonrawlins/cdk-iam-policy-builder-helper/cdkiampolicybuilderhelper
 
-go 1.23
+go 1.25
 
 require (
-	github.com/aws/jsii-runtime-go v1.126.0
+	github.com/aws/jsii-runtime-go v1.127.0
 	github.com/aws/aws-cdk-go/awscdk/v2 v2.85.0
 	github.com/aws/constructs-go/constructs/v10 v10.0.5
 	github.com/cdklabs/awscdk-asset-awscli-go/awscliv1/v2 v2.2.267 // indirect
