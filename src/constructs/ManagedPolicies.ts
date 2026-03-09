@@ -5795,4 +5795,12 @@ export const ManagedPolicies = {
     PolicyName: 'CloudWatchLogsAPIKeyAccess',
     Arn: 'arn:aws:iam::aws:policy/CloudWatchLogsAPIKeyAccess',
   },
+  'AWSTransformSecretsManagerConnectorPolicy': {
+    PolicyName: 'AWSTransformSecretsManagerConnectorPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSTransformSecretsManagerConnectorPolicy',
+  },
+  'AWSHealthOmicsServiceLinkedRolePolicy': {
+    PolicyName: 'AWSHealthOmicsServiceLinkedRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSHealthOmicsServiceLinkedRolePolicy',
+  },
 };
