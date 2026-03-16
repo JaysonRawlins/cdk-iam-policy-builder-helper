@@ -1115,10 +1115,6 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonGuardDutyReadOnlyAccess',
     Arn: 'arn:aws:iam::aws:policy/AmazonGuardDutyReadOnlyAccess',
   },
-  'AmazonGuardDutyFullAccess': {
-    PolicyName: 'AmazonGuardDutyFullAccess',
-    Arn: 'arn:aws:iam::aws:policy/AmazonGuardDutyFullAccess',
-  },
   'AmazonSageMakerReadOnly': {
     PolicyName: 'AmazonSageMakerReadOnly',
     Arn: 'arn:aws:iam::aws:policy/AmazonSageMakerReadOnly',
@@ -5802,5 +5798,13 @@ export const ManagedPolicies = {
   'AWSHealthOmicsServiceLinkedRolePolicy': {
     PolicyName: 'AWSHealthOmicsServiceLinkedRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSHealthOmicsServiceLinkedRolePolicy',
+  },
+  'AmazonRoute53GlobalResolverFullAccess': {
+    PolicyName: 'AmazonRoute53GlobalResolverFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonRoute53GlobalResolverFullAccess',
+  },
+  'AmazonRoute53GlobalResolverReadOnlyAccess': {
+    PolicyName: 'AmazonRoute53GlobalResolverReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonRoute53GlobalResolverReadOnlyAccess',
   },
 };
