@@ -5807,4 +5807,20 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonRoute53GlobalResolverReadOnlyAccess',
     Arn: 'arn:aws:iam::aws:policy/AmazonRoute53GlobalResolverReadOnlyAccess',
   },
+  'AWSElementalMediaConnectCreateFlow': {
+    PolicyName: 'AWSElementalMediaConnectCreateFlow',
+    Arn: 'arn:aws:iam::aws:policy/AWSElementalMediaConnectCreateFlow',
+  },
+  'AWSElementalMediaConnectCreateBridge': {
+    PolicyName: 'AWSElementalMediaConnectCreateBridge',
+    Arn: 'arn:aws:iam::aws:policy/AWSElementalMediaConnectCreateBridge',
+  },
+  'AWSElementalMediaConnectDeleteFlow': {
+    PolicyName: 'AWSElementalMediaConnectDeleteFlow',
+    Arn: 'arn:aws:iam::aws:policy/AWSElementalMediaConnectDeleteFlow',
+  },
+  'AWSElementalMediaConnectDeleteBridge': {
+    PolicyName: 'AWSElementalMediaConnectDeleteBridge',
+    Arn: 'arn:aws:iam::aws:policy/AWSElementalMediaConnectDeleteBridge',
+  },
 };
