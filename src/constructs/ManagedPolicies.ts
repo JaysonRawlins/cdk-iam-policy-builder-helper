@@ -5823,4 +5823,52 @@ export const ManagedPolicies = {
     PolicyName: 'AWSElementalMediaConnectDeleteBridge',
     Arn: 'arn:aws:iam::aws:policy/AWSElementalMediaConnectDeleteBridge',
   },
+  'AWSPartnerProServeToolsIndividualContributor': {
+    PolicyName: 'AWSPartnerProServeToolsIndividualContributor',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerProServeToolsIndividualContributor',
+  },
+  'AWSPartnerProServeToolsFullAccess': {
+    PolicyName: 'AWSPartnerProServeToolsFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerProServeToolsFullAccess',
+  },
+  'AWSPartnerProServeToolsOrganizationReaderIndividualContributor': {
+    PolicyName: 'AWSPartnerProServeToolsOrganizationReaderIndividualContributor',
+    Arn: 'arn:aws:iam::aws:policy/AWSPartnerProServeToolsOrganizationReaderIndividualContributor',
+  },
+  'AWSServiceRoleForAWSTransformCustom': {
+    PolicyName: 'AWSServiceRoleForAWSTransformCustom',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSServiceRoleForAWSTransformCustom',
+  },
+  'DBModDiscoveryAndAssessment': {
+    PolicyName: 'DBModDiscoveryAndAssessment',
+    Arn: 'arn:aws:iam::aws:policy/DBModDiscoveryAndAssessment',
+  },
+  'DBModProvisioningAndMigration': {
+    PolicyName: 'DBModProvisioningAndMigration',
+    Arn: 'arn:aws:iam::aws:policy/DBModProvisioningAndMigration',
+  },
+  'AWSEC2VssRestorePolicy': {
+    PolicyName: 'AWSEC2VssRestorePolicy',
+    Arn: 'arn:aws:iam::aws:policy/AWSEC2VssRestorePolicy',
+  },
+  'AIDevOpsAgentReadOnlyAccess': {
+    PolicyName: 'AIDevOpsAgentReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AIDevOpsAgentReadOnlyAccess',
+  },
+  'AIDevOpsAgentAccessPolicy': {
+    PolicyName: 'AIDevOpsAgentAccessPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AIDevOpsAgentAccessPolicy',
+  },
+  'AIDevOpsOperatorAppAccessPolicy': {
+    PolicyName: 'AIDevOpsOperatorAppAccessPolicy',
+    Arn: 'arn:aws:iam::aws:policy/AIDevOpsOperatorAppAccessPolicy',
+  },
+  'AIDevOpsAgentFullAccess': {
+    PolicyName: 'AIDevOpsAgentFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AIDevOpsAgentFullAccess',
+  },
+  'AWSBedrockAgentCoreGatewayNetworkServiceRolePolicy': {
+    PolicyName: 'AWSBedrockAgentCoreGatewayNetworkServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSBedrockAgentCoreGatewayNetworkServiceRolePolicy',
+  },
 };
