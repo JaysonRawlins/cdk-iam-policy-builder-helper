@@ -293,7 +293,9 @@ jobs:
       - name: Move build artifact out of the way
         run: mv dist dist.old
       - name: Create go artifact
-        run: cd .repo && npx projen package:go
+        run: |-
+          cd .repo && npx projen package:go
+          echo "\nretract v0.0.194 // Contains compromised axios@1.14.1 (supply chain attack)" >> .repo/dist/go/cdkiampolicybuilderhelper/go.mod
       - name: Collect go artifact
         run: mv .repo/dist dist
       - name: Release

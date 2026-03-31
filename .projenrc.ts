@@ -430,6 +430,16 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_nuge
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_nuget.permissions.packages', 'read');
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_nuget.permissions.contents', 'write');
 
+// Retract compromised v0.0.194 in Go module (axios supply chain attack)
+// jsii-pacmak regenerates go.mod, so we inject the retract directive post-generation
+project.github!.tryFindWorkflow('release')!.file!.addOverride(
+  'jobs.release_golang.steps.9.run',
+  [
+    'cd .repo && npx projen package:go',
+    'echo "\\nretract v0.0.194 // Contains compromised axios@1.14.1 (supply chain attack)" >> .repo/dist/go/cdkiampolicybuilderhelper/go.mod',
+  ].join('\n'),
+);
+
 // Prevent release workflow from triggering on Go module commits
 project.github!.tryFindWorkflow('release')!.file!.addOverride('on.push.paths-ignore', [
   'cdkiampolicybuilderhelper/**',

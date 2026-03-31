@@ -10,3 +10,5 @@ require (
 	github.com/cdklabs/awscdk-asset-kubectl-go/kubectlv20/v2 v2.1.4 // indirect
 	github.com/cdklabs/awscdk-asset-node-proxy-agent-go/nodeproxyagentv5/v2 v2.0.166 // indirect
 )
+
+retract v0.0.194 // Contains compromised axios@1.14.1 (supply chain attack)
