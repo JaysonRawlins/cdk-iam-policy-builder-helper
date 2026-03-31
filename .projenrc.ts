@@ -93,7 +93,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   ],
   deps: [
     '@aws-sdk/client-iam',
-    'axios@^1.8.2',
+    'axios@1.14.0',
   ],
   devDeps: [
     `aws-cdk@${cdkCliVersion}`,
@@ -304,6 +304,7 @@ generateIamWorkflow.addJobs({
 
 // Add Yarn resolutions to ensure patched transitive versions
 project.package.addField('resolutions', {
+  'axios': '1.14.0',
   'brace-expansion': '1.1.12',
   'form-data': '^4.0.4',
   '@eslint/plugin-kit': '^0.3.4',
