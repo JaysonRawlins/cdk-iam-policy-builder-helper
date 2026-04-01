@@ -12,6 +12,7 @@ const minProjenVersion = '0.98.10'; // Does not affect consumers of the library
 const minConstructsVersion = '10.0.5'; // Minimum version to support CDK v2 and does affect consumers of the library
 const devConstructsVersion = '10.0.5'; // Pin for local dev/build to avoid jsii type conflicts
 const configureAwsCredentialsVersion = 'v5';
+const createGithubAppTokenVersion = '3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5'; // pinned SHA for actions/create-github-app-token
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Jayson Rawlins',
   description: 'A CDK construct that helps build IAM policies using the AWS IAM Policy Builder dump. Normally it is better to use cdk-iam-floyd, However, I found that cdk-iam-floyd currently is not jsii compliant so I wasn\'t able to use it in my jsii compliant projects in languages that are not typescript or python.',
@@ -227,7 +228,7 @@ generateIamWorkflow.addJobs({
       {
         name: 'Generate token',
         id: 'generate_token',
-        uses: 'actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5',
+        uses: `actions/create-github-app-token@${createGithubAppTokenVersion}`,
         with: {
           'app-id': '${{ secrets.PROJEN_APP_ID }}',
           'private-key': '${{ secrets.PROJEN_APP_PRIVATE_KEY }}',
@@ -445,7 +446,7 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride(
 const releaseWorkflow = project.github!.tryFindWorkflow('release')!;
 releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.name', 'Generate token');
 releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.id', 'generate_token');
-releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.uses', 'actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5');
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.uses', `actions/create-github-app-token@${createGithubAppTokenVersion}`);
 releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.with', {
   'app-id': '${{ secrets.PROJEN_APP_ID }}',
   'private-key': '${{ secrets.PROJEN_APP_PRIVATE_KEY }}',
