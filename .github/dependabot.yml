@@ -1,0 +1,14 @@
+# Dependabot config — security alerts only, no version update PRs.
+# Version upgrades are handled by projen's upgrade-main workflow.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 0
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
