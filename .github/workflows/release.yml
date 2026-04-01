@@ -295,7 +295,7 @@ jobs:
       - name: Create go artifact
         run: |-
           cd .repo && npx projen package:go
-          echo "\nretract v0.0.194 // Contains compromised axios@1.14.1 (supply chain attack)" >> .repo/dist/go/cdkiampolicybuilderhelper/go.mod
+          find .repo/dist/go -name go.mod -exec sh -c 'echo "\nretract v0.0.194 // Contains compromised axios@1.14.1 (supply chain attack)" >> "$1"' _ {} \;
       - name: Collect go artifact
         run: mv .repo/dist dist
       - name: Generate token
