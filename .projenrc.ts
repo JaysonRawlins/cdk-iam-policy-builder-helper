@@ -437,8 +437,9 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_nuge
 project.github!.tryFindWorkflow('release')!.file!.addOverride(
   'jobs.release_golang.steps.9.run',
   [
-    'cd .repo && npx projen package:go',
-    'find .repo/dist/go -name go.mod -exec sh -c \'echo "\\nretract v0.0.194 // Contains compromised axios@1.14.1 (supply chain attack)" >> "$1"\' _ {} \\;',
+    'cd .repo',
+    'npx projen package:go',
+    'find dist/go -name go.mod -exec sh -c \'echo "\\nretract v0.0.194 // Contains compromised axios@1.14.1 (supply chain attack)" >> "$1"\' _ {} \\;',
   ].join('\n'),
 );
 
