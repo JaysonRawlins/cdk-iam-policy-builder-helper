@@ -440,11 +440,78 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride(
   ].join('\n'),
 );
 
+// Replace GO_GITHUB_TOKEN PAT with GitHub App installation token for Go module publishing
+// Step 11: clear old Release step fields and repurpose as token generation
+const releaseWorkflow = project.github!.tryFindWorkflow('release')!;
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.name', 'Generate token');
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.id', 'generate_token');
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.uses', 'actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5');
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.with', {
+  'app-id': '${{ secrets.PROJEN_APP_ID }}',
+  'private-key': '${{ secrets.PROJEN_APP_PRIVATE_KEY }}',
+});
+// Remove old Release step fields from step 11
+releaseWorkflow.file!.addDeletionOverride('jobs.release_golang.steps.11.env');
+releaseWorkflow.file!.addDeletionOverride('jobs.release_golang.steps.11.run');
+// Step 12: actual release using the App token
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.12', {
+  name: 'Release',
+  env: {
+    GIT_USER_NAME: 'github-actions[bot]',
+    GIT_USER_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com',
+    GITHUB_TOKEN: '${{ steps.generate_token.outputs.token }}',
+  },
+  run: 'npx -p publib@latest publib-golang',
+});
+
+// PyPI Trusted Publishing — replace TWINE_USERNAME/TWINE_PASSWORD with OIDC
+releaseWorkflow.file!.addDeletionOverride('jobs.release_pypi.steps.11.env.TWINE_USERNAME');
+releaseWorkflow.file!.addDeletionOverride('jobs.release_pypi.steps.11.env.TWINE_PASSWORD');
+releaseWorkflow.file!.addOverride('jobs.release_pypi.steps.11.env.PYPI_TRUSTED_PUBLISHER', 'true');
+
+// NuGet Trusted Publishing — replace NUGET_API_KEY with OIDC
+releaseWorkflow.file!.addDeletionOverride('jobs.release_nuget.steps.11.env.NUGET_API_KEY');
+releaseWorkflow.file!.addOverride('jobs.release_nuget.steps.11.env.NUGET_TRUSTED_PUBLISHER', 'true');
+releaseWorkflow.file!.addOverride('jobs.release_nuget.steps.11.env.NUGET_USERNAME', 'jjrawlins');
+
 // Prevent release workflow from triggering on Go module commits
 project.github!.tryFindWorkflow('release')!.file!.addOverride('on.push.paths-ignore', [
   'cdkiampolicybuilderhelper/**',
 ]);
 
+
+// Dependency review on PRs — blocks merge if new high/critical vulnerabilities are introduced
+// Works with existing Dependabot security updates to create a merge gate
+const securityWorkflow = project.github!.addWorkflow('security');
+securityWorkflow.on({
+  pullRequest: {
+    branches: ['main'],
+  },
+});
+securityWorkflow.addJobs({
+  'dependency-review': {
+    name: 'Dependency Review',
+    runsOn: ['ubuntu-latest'],
+    permissions: {
+      contents: workflows.JobPermission.READ,
+      pullRequests: workflows.JobPermission.WRITE,
+    },
+    steps: [
+      {
+        name: 'Checkout',
+        uses: 'actions/checkout@v5',
+      },
+      {
+        name: 'Dependency Review',
+        uses: 'actions/dependency-review-action@v4',
+        with: {
+          'fail-on-severity': 'high',
+          'comment-summary-in-pr': 'always',
+        },
+      },
+    ],
+  },
+});
 
 new TextFile(project, '.tool-versions', {
   lines: [
