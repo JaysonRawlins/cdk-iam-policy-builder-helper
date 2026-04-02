@@ -319,15 +319,11 @@ project.deps.removeDependency('constructs');
 project.deps.addDependency(`constructs@>=${minConstructsVersion} <11.0.0`, DependencyType.PEER);
 
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.steps.1.with.node-version', workflowNodeVersion);
-project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.id-token', 'write');
-project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.packages', 'write');
-project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.pull-requests', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.contents', 'write');
+project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.pull-requests', 'write');
 
-project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.id-token', 'write');
-project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.packages', 'write');
-project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.pull-requests', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.contents', 'write');
+project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.pull-requests', 'write');
 
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release.steps.2.with.node-version', workflowNodeVersion);
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_github.steps.0.with.node-version', workflowNodeVersion);
@@ -354,12 +350,6 @@ project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.step
   },
 });
 
-/**
- * For the build job, we need to be able to read from packages and also need id-token permissions for OIDC to authenticate to the registry.
- * This is needed to be able to install dependencies from GitHub Packages during the build.
- */
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.permissions.id-token', 'write');
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.permissions.packages', 'read');
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.steps.1.with.node-version', workflowNodeVersion);
 
 /**
@@ -387,23 +377,9 @@ buildWorkflow.file!.addOverride('jobs.package-dotnet.steps.4.with.ref', '${{ git
 // Override package-go job checkout (step index 4)
 buildWorkflow.file!.addOverride('jobs.package-go.steps.4.with.ref', '${{ github.event.pull_request.head.sha }}');
 
-/**
- * For the package jobs, we need to be able to write to packages and also need id-token permissions for OIDC to authenticate to the registry.
- */
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-js.permissions.id-token', 'write');
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-js.permissions.packages', 'write');
 buildWorkflow.file!.addOverride('jobs.package-js.steps.0.with.node-version', workflowNodeVersion);
-
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-python.permissions.packages', 'write');
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-python.permissions.id-token', 'write');
 buildWorkflow.file!.addOverride('jobs.package-python.steps.0.with.node-version', workflowNodeVersion);
-
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-go.permissions.packages', 'write');
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-go.permissions.id-token', 'write');
 buildWorkflow.file!.addOverride('jobs.package-go.steps.0.with.node-version', workflowNodeVersion);
-
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-dotnet.permissions.packages', 'write');
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-dotnet.permissions.id-token', 'write');
 buildWorkflow.file!.addOverride('jobs.package-dotnet.steps.0.with.node-version', workflowNodeVersion);
 
 /** * For the release jobs, we need to be able to read from packages and also need id-token permissions for OIDC to authenticate to the registry.

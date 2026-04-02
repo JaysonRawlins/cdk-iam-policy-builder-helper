@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
-      packages: read
     outputs:
       self_mutation_happened: ${{ steps.self_mutation.outputs.self_mutation_happened }}
     env:
@@ -100,8 +98,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
-      packages: write
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v5
@@ -136,8 +132,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
-      id-token: write
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v5
@@ -175,8 +169,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
-      id-token: write
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v5
@@ -214,8 +206,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
-      id-token: write
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v5
