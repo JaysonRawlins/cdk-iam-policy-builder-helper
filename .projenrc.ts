@@ -400,15 +400,19 @@ buildWorkflow.file!.addOverride('jobs.package-go.steps.5.with.ref', '${{ github.
  */
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-js.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-js.permissions.packages', 'write');
+buildWorkflow.file!.addOverride('jobs.package-js.steps.0.with.node-version', workflowNodeVersion);
 
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-python.permissions.packages', 'write');
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-python.permissions.id-token', 'write');
+buildWorkflow.file!.addOverride('jobs.package-python.steps.0.with.node-version', workflowNodeVersion);
 
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-go.permissions.packages', 'write');
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-go.permissions.id-token', 'write');
+buildWorkflow.file!.addOverride('jobs.package-go.steps.0.with.node-version', workflowNodeVersion);
 
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-dotnet.permissions.packages', 'write');
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.package-dotnet.permissions.id-token', 'write');
+buildWorkflow.file!.addOverride('jobs.package-dotnet.steps.0.with.node-version', workflowNodeVersion);
 
 /** * For the release jobs, we need to be able to read from packages and also need id-token permissions for OIDC to authenticate to the registry.
  */
@@ -464,7 +468,12 @@ releaseWorkflow.file!.addOverride('jobs.release_golang.steps.12', {
     GIT_USER_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com',
     GITHUB_TOKEN: '${{ steps.generate_token.outputs.token }}',
   },
-  run: 'npx -p publib@latest publib-golang',
+  run: [
+    // publib constructs https://<token>@github.com/... which works for PATs but not GitHub App tokens.
+    // App tokens require the x-access-token: username prefix.
+    'git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://${GITHUB_TOKEN}@github.com/"',
+    'npx -p publib@latest publib-golang',
+  ].join('\n'),
 });
 
 // PyPI Trusted Publishing — replace TWINE_USERNAME/TWINE_PASSWORD with OIDC
