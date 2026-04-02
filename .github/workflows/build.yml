@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
-      packages: read
     outputs:
       self_mutation_happened: ${{ steps.self_mutation.outputs.self_mutation_happened }}
     env:
@@ -21,14 +19,6 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
-          role-duration-seconds: 900
-          aws-region: ${{ secrets.AWS_GITHUB_OIDC_REGION }}
-          role-skip-session-tagging: true
-          role-session-name: GitHubActions
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
@@ -108,8 +98,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
-      packages: write
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v5
@@ -123,14 +111,6 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
-          role-duration-seconds: 900
-          aws-region: ${{ secrets.AWS_GITHUB_OIDC_REGION }}
-          role-skip-session-tagging: true
-          role-session-name: GitHubActions
       - name: Checkout
         uses: actions/checkout@v5
         with:
@@ -152,8 +132,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
-      id-token: write
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v5
@@ -170,14 +148,6 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
-          role-duration-seconds: 900
-          aws-region: ${{ secrets.AWS_GITHUB_OIDC_REGION }}
-          role-skip-session-tagging: true
-          role-session-name: GitHubActions
       - name: Checkout
         uses: actions/checkout@v5
         with:
@@ -199,8 +169,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
-      id-token: write
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v5
@@ -217,14 +185,6 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
-          role-duration-seconds: 900
-          aws-region: ${{ secrets.AWS_GITHUB_OIDC_REGION }}
-          role-skip-session-tagging: true
-          role-session-name: GitHubActions
       - name: Checkout
         uses: actions/checkout@v5
         with:
@@ -246,8 +206,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
-      id-token: write
     if: ${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v5
@@ -264,14 +222,6 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
-          role-duration-seconds: 900
-          aws-region: ${{ secrets.AWS_GITHUB_OIDC_REGION }}
-          role-skip-session-tagging: true
-          role-session-name: GitHubActions
       - name: Checkout
         uses: actions/checkout@v5
         with:

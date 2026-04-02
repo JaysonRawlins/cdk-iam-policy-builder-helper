@@ -4,15 +4,13 @@ name: upgrade-main
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 9 * * 1
 jobs:
   upgrade:
     name: Upgrade
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
-      packages: write
       pull-requests: write
     outputs:
       patch_created: ${{ steps.create_patch.outputs.patch_created }}
@@ -21,14 +19,6 @@ jobs:
         uses: actions/checkout@v5
         with:
           ref: main
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_ROLE }}
-          role-duration-seconds: 900
-          aws-region: ${{ secrets.AWS_GITHUB_OIDC_REGION }}
-          role-skip-session-tagging: true
-          role-session-name: GitHubActions
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
@@ -57,8 +47,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
-      packages: write
       pull-requests: write
     if: ${{ needs.upgrade.outputs.patch_created }}
     steps:
