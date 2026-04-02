@@ -464,7 +464,12 @@ releaseWorkflow.file!.addOverride('jobs.release_golang.steps.12', {
     GIT_USER_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com',
     GITHUB_TOKEN: '${{ steps.generate_token.outputs.token }}',
   },
-  run: 'npx -p publib@latest publib-golang',
+  run: [
+    // publib constructs https://<token>@github.com/... which works for PATs but not GitHub App tokens.
+    // App tokens require the x-access-token: username prefix.
+    'git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://${GITHUB_TOKEN}@github.com/"',
+    'npx -p publib@latest publib-golang',
+  ].join('\n'),
 });
 
 // PyPI Trusted Publishing — replace TWINE_USERNAME/TWINE_PASSWORD with OIDC
