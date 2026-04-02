@@ -1,6 +1,6 @@
 import { awscdk, DependencyType, TextFile } from 'projen';
 import { GithubCredentials, workflows } from 'projen/lib/github';
-import { NpmAccess } from 'projen/lib/javascript';
+import { NpmAccess, UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 
 const cdkCliVersion = '2.1029.2';
 const minNodeVersion = '20.0.0';
@@ -33,19 +33,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   license: 'Apache-2.0',
   jsiiVersion: jsiiVersion,
   name: '@jjrawlins/cdk-iam-policy-builder-helper',
-  workflowBootstrapSteps: [
-    {
-      name: 'configure aws credentials',
-      uses: `aws-actions/configure-aws-credentials@${configureAwsCredentialsVersion}`,
-      with: {
-        'role-to-assume': '${{ secrets.AWS_GITHUB_OIDC_ROLE }}',
-        'role-duration-seconds': 900,
-        'aws-region': '${{ secrets.AWS_GITHUB_OIDC_REGION }}',
-        'role-skip-session-tagging': true,
-        'role-session-name': 'GitHubActions',
-      },
-    },
-  ],
   npmAccess: NpmAccess.PUBLIC,
   projenrcTs: true,
   repositoryUrl: 'https://github.com/JaysonRawlins/cdk-iam-policy-builder-helper.git',
@@ -77,6 +64,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   },
   depsUpgrade: true,
+  depsUpgradeOptions: {
+    workflowOptions: {
+      schedule: UpgradeDependenciesSchedule.expressions(['0 9 * * 1']),
+    },
+  },
   publishToNuget: {
     packageId: 'JJRawlins.CdkIamPolicyBuilderHelper',
     dotNetNamespace: 'JJRawlins.CdkIamPolicyBuilderHelper',
@@ -326,7 +318,7 @@ project.package.addField('engines', {
 project.deps.removeDependency('constructs');
 project.deps.addDependency(`constructs@>=${minConstructsVersion} <11.0.0`, DependencyType.PEER);
 
-project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.steps.2.with.node-version', workflowNodeVersion);
+project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.steps.1.with.node-version', workflowNodeVersion);
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.packages', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.upgrade.permissions.pull-requests', 'write');
@@ -337,14 +329,14 @@ project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.perm
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.pull-requests', 'write');
 project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.permissions.contents', 'write');
 
-project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release.steps.3.with.node-version', workflowNodeVersion);
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release.steps.2.with.node-version', workflowNodeVersion);
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_github.steps.0.with.node-version', workflowNodeVersion);
 
 // Override node-version to 24 for npm trusted publishing (requires npm 11.5.1+)
 // This only affects the release_npm job, not the project's minNodeVersion
 project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_npm.steps.0.with.node-version', '24');
 // Add --ignore-engines to yarn install since Node 24 is outside the engines range (20.x)
-project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_npm.steps.5.run', 'cd .repo && yarn install --check-files --frozen-lockfile --ignore-engines');
+project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_npm.steps.4.run', 'cd .repo && yarn install --check-files --frozen-lockfile --ignore-engines');
 
 // Override node-version for publish jobs that default to minNodeVersion (20.0.0)
 // @eslint/plugin-kit@0.3.5 requires Node ^20.9.0, so 20.0.0 fails yarn install
@@ -368,7 +360,7 @@ project.github!.tryFindWorkflow('upgrade-main')!.file!.addOverride('jobs.pr.step
  */
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.permissions.id-token', 'write');
 project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.permissions.packages', 'read');
-project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.steps.2.with.node-version', workflowNodeVersion);
+project.github!.tryFindWorkflow('build')!.file!.addOverride('jobs.build.steps.1.with.node-version', workflowNodeVersion);
 
 /**
  * Fix checkout to use SHA instead of branch ref (survives branch deletion after automerge).
@@ -383,17 +375,17 @@ buildWorkflow.file!.addOverride('jobs.build.steps.0.with.ref', '${{ github.event
 // Override self-mutation job checkout (step index 1, after token generation)
 buildWorkflow.file!.addOverride('jobs.self-mutation.steps.1.with.ref', '${{ github.event.pull_request.head.sha }}');
 
-// Override package-js job checkout (step index 4)
-buildWorkflow.file!.addOverride('jobs.package-js.steps.4.with.ref', '${{ github.event.pull_request.head.sha }}');
+// Override package-js job checkout (step index 3)
+buildWorkflow.file!.addOverride('jobs.package-js.steps.3.with.ref', '${{ github.event.pull_request.head.sha }}');
 
-// Override package-python job checkout (step index 5)
-buildWorkflow.file!.addOverride('jobs.package-python.steps.5.with.ref', '${{ github.event.pull_request.head.sha }}');
+// Override package-python job checkout (step index 4)
+buildWorkflow.file!.addOverride('jobs.package-python.steps.4.with.ref', '${{ github.event.pull_request.head.sha }}');
 
-// Override package-dotnet job checkout (step index 5)
-buildWorkflow.file!.addOverride('jobs.package-dotnet.steps.5.with.ref', '${{ github.event.pull_request.head.sha }}');
+// Override package-dotnet job checkout (step index 4)
+buildWorkflow.file!.addOverride('jobs.package-dotnet.steps.4.with.ref', '${{ github.event.pull_request.head.sha }}');
 
-// Override package-go job checkout (step index 5)
-buildWorkflow.file!.addOverride('jobs.package-go.steps.5.with.ref', '${{ github.event.pull_request.head.sha }}');
+// Override package-go job checkout (step index 4)
+buildWorkflow.file!.addOverride('jobs.package-go.steps.4.with.ref', '${{ github.event.pull_request.head.sha }}');
 
 /**
  * For the package jobs, we need to be able to write to packages and also need id-token permissions for OIDC to authenticate to the registry.
@@ -439,7 +431,7 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride('jobs.release_nuge
 // Retract compromised v0.0.194 in Go module (axios supply chain attack)
 // jsii-pacmak regenerates go.mod, so we inject the retract directive post-generation
 project.github!.tryFindWorkflow('release')!.file!.addOverride(
-  'jobs.release_golang.steps.9.run',
+  'jobs.release_golang.steps.8.run',
   [
     'cd .repo',
     'npx projen package:go',
@@ -448,20 +440,20 @@ project.github!.tryFindWorkflow('release')!.file!.addOverride(
 );
 
 // Replace GO_GITHUB_TOKEN PAT with GitHub App installation token for Go module publishing
-// Step 11: clear old Release step fields and repurpose as token generation
+// Step 10: clear old Release step fields and repurpose as token generation
 const releaseWorkflow = project.github!.tryFindWorkflow('release')!;
-releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.name', 'Generate token');
-releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.id', 'generate_token');
-releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.uses', `actions/create-github-app-token@${createGithubAppTokenVersion}`);
-releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.with', {
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.10.name', 'Generate token');
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.10.id', 'generate_token');
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.10.uses', `actions/create-github-app-token@${createGithubAppTokenVersion}`);
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.10.with', {
   'app-id': '${{ secrets.PROJEN_APP_ID }}',
   'private-key': '${{ secrets.PROJEN_APP_PRIVATE_KEY }}',
 });
-// Remove old Release step fields from step 11
-releaseWorkflow.file!.addDeletionOverride('jobs.release_golang.steps.11.env');
-releaseWorkflow.file!.addDeletionOverride('jobs.release_golang.steps.11.run');
-// Step 12: actual release using the App token
-releaseWorkflow.file!.addOverride('jobs.release_golang.steps.12', {
+// Remove old Release step fields from step 10
+releaseWorkflow.file!.addDeletionOverride('jobs.release_golang.steps.10.env');
+releaseWorkflow.file!.addDeletionOverride('jobs.release_golang.steps.10.run');
+// Step 11: actual release using the App token
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11', {
   name: 'Release',
   env: {
     GIT_USER_NAME: 'github-actions[bot]',
@@ -477,14 +469,14 @@ releaseWorkflow.file!.addOverride('jobs.release_golang.steps.12', {
 });
 
 // PyPI Trusted Publishing — replace TWINE_USERNAME/TWINE_PASSWORD with OIDC
-releaseWorkflow.file!.addDeletionOverride('jobs.release_pypi.steps.11.env.TWINE_USERNAME');
-releaseWorkflow.file!.addDeletionOverride('jobs.release_pypi.steps.11.env.TWINE_PASSWORD');
-releaseWorkflow.file!.addOverride('jobs.release_pypi.steps.11.env.PYPI_TRUSTED_PUBLISHER', 'true');
+releaseWorkflow.file!.addDeletionOverride('jobs.release_pypi.steps.10.env.TWINE_USERNAME');
+releaseWorkflow.file!.addDeletionOverride('jobs.release_pypi.steps.10.env.TWINE_PASSWORD');
+releaseWorkflow.file!.addOverride('jobs.release_pypi.steps.10.env.PYPI_TRUSTED_PUBLISHER', 'true');
 
 // NuGet Trusted Publishing — replace NUGET_API_KEY with OIDC
-releaseWorkflow.file!.addDeletionOverride('jobs.release_nuget.steps.11.env.NUGET_API_KEY');
-releaseWorkflow.file!.addOverride('jobs.release_nuget.steps.11.env.NUGET_TRUSTED_PUBLISHER', 'true');
-releaseWorkflow.file!.addOverride('jobs.release_nuget.steps.11.env.NUGET_USERNAME', 'jjrawlins');
+releaseWorkflow.file!.addDeletionOverride('jobs.release_nuget.steps.10.env.NUGET_API_KEY');
+releaseWorkflow.file!.addOverride('jobs.release_nuget.steps.10.env.NUGET_TRUSTED_PUBLISHER', 'true');
+releaseWorkflow.file!.addOverride('jobs.release_nuget.steps.10.env.NUGET_USERNAME', 'jjrawlins');
 
 // Prevent release workflow from triggering on Go module commits
 project.github!.tryFindWorkflow('release')!.file!.addOverride('on.push.paths-ignore', [
