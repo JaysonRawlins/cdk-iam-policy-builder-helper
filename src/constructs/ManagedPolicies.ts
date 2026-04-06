@@ -5871,4 +5871,28 @@ export const ManagedPolicies = {
     PolicyName: 'AWSBedrockAgentCoreGatewayNetworkServiceRolePolicy',
     Arn: 'arn:aws:iam::aws:policy/aws-service-role/AWSBedrockAgentCoreGatewayNetworkServiceRolePolicy',
   },
+  'AnthropicReadOnlyAccess': {
+    PolicyName: 'AnthropicReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AnthropicReadOnlyAccess',
+  },
+  'AnthropicInferenceAccess': {
+    PolicyName: 'AnthropicInferenceAccess',
+    Arn: 'arn:aws:iam::aws:policy/AnthropicInferenceAccess',
+  },
+  'AnthropicLimitedAccess': {
+    PolicyName: 'AnthropicLimitedAccess',
+    Arn: 'arn:aws:iam::aws:policy/AnthropicLimitedAccess',
+  },
+  'AnthropicFullAccess': {
+    PolicyName: 'AnthropicFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AnthropicFullAccess',
+  },
+  'AmazonS3ExpressReadOnlyAccess': {
+    PolicyName: 'AmazonS3ExpressReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3ExpressReadOnlyAccess',
+  },
+  'AmazonS3ExpressFullAccess': {
+    PolicyName: 'AmazonS3ExpressFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3ExpressFullAccess',
+  },
 };
