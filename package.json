@@ -6,33 +6,26 @@
     "url": "https://github.com/JaysonRawlins/cdk-iam-policy-builder-helper.git"
   },
   "scripts": {
-    "build": "npx projen build",
-    "bump": "npx projen bump",
-    "clobber": "npx projen clobber",
-    "compat": "npx projen compat",
-    "compile": "npx projen compile",
-    "default": "npx projen default",
-    "docgen": "npx projen docgen",
-    "eject": "npx projen eject",
-    "eslint": "npx projen eslint",
-    "generate:actions": "npx projen generate:actions",
-    "generate:managed-policies": "npx projen generate:managed-policies",
-    "package": "npx projen package",
-    "package-all": "npx projen package-all",
-    "package:dotnet": "npx projen package:dotnet",
-    "package:go": "npx projen package:go",
-    "package:js": "npx projen package:js",
-    "package:python": "npx projen package:python",
-    "post-compile": "npx projen post-compile",
-    "post-upgrade": "npx projen post-upgrade",
-    "pre-compile": "npx projen pre-compile",
-    "release": "npx projen release",
-    "test": "npx projen test",
-    "test:watch": "npx projen test:watch",
-    "unbump": "npx projen unbump",
-    "upgrade": "npx projen upgrade",
-    "watch": "npx projen watch",
-    "projen": "npx projen"
+    "build": "yarn compile && yarn docgen && yarn test && yarn package",
+    "bump": "bash scripts/bump.sh",
+    "compat": "jsii-diff npm:$(node -p \"require('./package.json').name\") -k --ignore-file .compatignore || (echo \"\\nUNEXPECTED BREAKING CHANGES: add keys to .compatignore to skip.\\n\" && exit 1)",
+    "compile": "jsii --silence-warnings=reserved-word && rm -f tsconfig.json",
+    "docgen": "jsii-docgen -o API.md",
+    "eslint": "ESLINT_USE_FLAT_CONFIG=false NODE_NO_WARNINGS=1 eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools",
+    "generate:actions": "set -eu && ts-node -P tsconfig.dev.json ./src/bin/download-actions-json.ts && ts-node -P tsconfig.dev.json ./src/bin/create-actions-json.ts && yarn eslint && echo 'Actions.ts created successfully'",
+    "generate:managed-policies": "set -eu && ts-node -P tsconfig.dev.json ./src/bin/download-managed-policies-json.ts && yarn eslint && echo 'ManagedPolicies.ts created successfully'",
+    "package": "node -e \"process.env.CI ? process.exit(0) : process.exit(1)\" && yarn package:js || yarn package-all",
+    "package-all": "yarn package:js && yarn package:python && yarn package:dotnet && yarn package:go",
+    "package:dotnet": "jsii-pacmak -v --target dotnet",
+    "package:go": "jsii-pacmak -v --target go",
+    "package:js": "jsii-pacmak -v --target js",
+    "package:python": "jsii-pacmak -v --target python",
+    "release": "rm -rf dist && yarn bump && yarn build && yarn unbump && git diff --ignore-space-at-eol --exit-code",
+    "test": "jest --passWithNoTests --updateSnapshot && yarn eslint",
+    "test:watch": "jest --watch",
+    "unbump": "bash scripts/unbump.sh",
+    "upgrade": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@aws-sdk/types,@types/jest,@types/node,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,jsii-pacmak,ts-jest,ts-node,typescript,@aws-sdk/client-iam,axios,jsonc-parser && yarn install --check-files && yarn upgrade @aws-sdk/types @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk-lib aws-cdk commit-and-tag-version eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii ts-jest ts-node typescript @aws-sdk/client-iam axios jsonc-parser constructs",
+    "watch": "jsii -w --silence-warnings=reserved-word"
   },
   "author": {
     "name": "Jayson Rawlins",
@@ -60,7 +53,6 @@
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.127.0",
     "jsii-rosetta": "^5.8.22",
-    "projen": "^0.98.10",
     "ts-jest": "^29.4.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
@@ -71,7 +63,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-iam": "^3.1024.0",
-    "axios": "1.14.0",
+    "axios": "^1.15.0",
     "jsonc-parser": "^3.3.1"
   },
   "bundledDependencies": [
@@ -80,14 +72,13 @@
     "jsonc-parser"
   ],
   "resolutions": {
-    "axios": "1.14.0",
+    "axios": "^1.15.0",
     "brace-expansion": "1.1.12",
     "form-data": "^4.0.4",
     "@eslint/plugin-kit": "^0.3.4",
     "eslint-import-resolver-typescript": "^4.4.4",
     "aws-cdk-lib": ">=2.85.0 <3.0.0",
-    "constructs": "10.0.5",
-    "projen": ">=0.98.10 <1.0.0"
+    "constructs": "10.0.5"
   },
   "keywords": [
     "aws",
@@ -108,9 +99,7 @@
     "coverageProvider": "v8",
     "testMatch": [
       "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
-      "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/@(projenrc)/**/*(*.)@(spec|test).ts?(x)",
-      "<rootDir>/@(projenrc)/**/__tests__/**/*.ts?(x)"
+      "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,
@@ -171,6 +160,5 @@
       "outDir": "lib",
       "rootDir": "src"
     }
-  },
-  "//": "~~ Generated by projen. To modify, edit .projenrc.ts and run \"npx projen\"."
+  }
 }
