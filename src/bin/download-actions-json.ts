@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import axios from 'axios';
 import { parse } from 'jsonc-parser';
 
 async function fetchData() {
@@ -13,17 +12,24 @@ async function fetchData() {
       'Accept-Language': 'en-US,en;q=0.9',
     };
 
-    const response = await axios.get('https://awspolicygen.s3.amazonaws.com/js/policies.js', {
+    const response = await fetch('https://awspolicygen.s3.amazonaws.com/js/policies.js', {
       headers: headers,
     });
 
-    const index = response.data.indexOf('=');
+    if (!response.ok) {
+      console.error(`HTTP error: ${response.status} ${response.statusText}`);
+      process.exit(1);
+    }
+
+    const responseData = await response.text();
+
+    const index = responseData.indexOf('=');
     if (index === -1) {
       console.error("Unexpected data format. '=' not found");
       process.exit(1);
     }
 
-    const data = response.data.slice(index + 1);
+    const data = responseData.slice(index + 1);
 
     let jsonData: { [key: string]: any };
     try {
