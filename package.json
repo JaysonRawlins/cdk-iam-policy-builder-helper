@@ -81,7 +81,7 @@
     "eslint-import-resolver-typescript": "^4.4.4",
     "aws-cdk-lib": ">=2.85.0 <3.0.0",
     "constructs": "10.0.5",
-    "projen": ">=0.99.52 <1.0.0"
+    "projen": "0.99.52"
   },
   "keywords": [
     "aws",

@@ -108,7 +108,9 @@ project.package.addField('resolutions', {
   'eslint-import-resolver-typescript': '^4.4.4',
   'aws-cdk-lib': `>=${cdkVersion} <3.0.0`,
   'constructs': devConstructsVersion,
-  'projen': `>=${minProjenVersion} <1.0.0`,
+  // Exact-pin projen so transitive resolution can't pick a newer version
+  // that Aikido Safe-Chain would block as < 7 days old.
+  'projen': minProjenVersion,
 });
 
 project.package.addField('engines', {

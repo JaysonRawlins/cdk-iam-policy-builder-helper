@@ -5411,27 +5411,6 @@ projen@0.99.52:
     yaml "^2.2.2"
     yargs "^17.7.2"
 
-"projen@>=0.99.52 <1.0.0":
-  version "0.99.63"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.99.63.tgz#990944b08cb5c1dddf3e43ecf024afe2ed982313"
-  integrity sha512-CHM4zSRAS/zBVmdaF3AMiVJZbmQ5yjSs9bnrHkxx+mNXToh7QAeBIEsZXgdBT7bNnV6YOkNfGhbz39p7pmxQYg==
-  dependencies:
-    "@iarna/toml" "^2.2.5"
-    case "^1.6.3"
-    chalk "^4.1.2"
-    comment-json "4.2.2"
-    constructs "^10.0.0"
-    conventional-changelog-config-spec "^2.1.0"
-    fast-glob "^3.3.3"
-    fast-json-patch "^3.1.1"
-    ini "^2.0.0"
-    parse-conflict-json "^4.0.0"
-    semver "^7.8.0"
-    shx "^0.4.0"
-    xmlbuilder2 "^4.0.3"
-    yaml "^2.2.2"
-    yargs "^17.7.2"
-
 prompts@^2.0.1:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/prompts/-/prompts-2.4.2.tgz#7b57e73b3a48029ad10ebd44f74b01722a4cb069"
