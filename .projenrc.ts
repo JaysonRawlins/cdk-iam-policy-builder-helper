@@ -68,6 +68,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
     // The Go module is published into this same repo, so the workflow's own
     // token suffices — no PAT (long-lived tokens eliminated in eb4ba25).
     githubTokenSecret: 'GITHUB_TOKEN',
+    // Publish to a dedicated branch, not main: go resolution works off the
+    // cdkiampolicybuilderhelper/vX.Y.Z tags, and main's required build check
+    // (require-build-green ruleset) would reject publib's direct push.
+    gitBranch: 'go',
   },
 
   githubOptions: {

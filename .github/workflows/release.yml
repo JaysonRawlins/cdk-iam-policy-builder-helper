@@ -277,6 +277,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
+          GIT_BRANCH: go
           GIT_USER_NAME: github-actions[bot]
           GIT_USER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GITHUB_TOKEN: x-access-token:${{ secrets.GITHUB_TOKEN }}
