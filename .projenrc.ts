@@ -8,7 +8,7 @@ const devConstructsVersion = '10.0.5';
 const cdkCliVersion = '2.1029.2';
 const devNodeVersion = '20.19.0';
 const minNodeVersion = '20.0.0';
-const workflowNodeVersion = '20.x';
+const workflowNodeVersion = '24.x';
 const minProjenVersion = '0.99.52';
 
 const project = new awscdk.AwsCdkConstructLibrary({
@@ -21,6 +21,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   license: 'Apache-2.0',
   minNodeVersion: minNodeVersion,
+  workflowNodeVersion: workflowNodeVersion,
   cdkVersion: cdkVersion,
   cdkCliVersion: cdkCliVersion,
   projenVersion: minProjenVersion,

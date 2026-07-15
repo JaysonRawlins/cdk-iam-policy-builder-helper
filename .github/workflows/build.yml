@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 20.0.0
+          node-version: 24.x
           package-manager-cache: false
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
@@ -70,7 +70,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v6
         with:
-          node-version: 20.0.0
+          node-version: 24.x
           package-manager-cache: "false"
       - name: Download build artifacts
         uses: actions/download-artifact@v8
@@ -109,7 +109,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v6
         with:
-          node-version: 20.0.0
+          node-version: 24.x
           package-manager-cache: "false"
       - uses: actions/setup-python@v6
         with:
@@ -151,7 +151,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v6
         with:
-          node-version: 20.0.0
+          node-version: 24.x
           package-manager-cache: "false"
       - uses: actions/setup-dotnet@v5
         with:
@@ -193,7 +193,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v6
         with:
-          node-version: 20.0.0
+          node-version: 24.x
           package-manager-cache: "false"
       - uses: actions/setup-go@v6
         with:
