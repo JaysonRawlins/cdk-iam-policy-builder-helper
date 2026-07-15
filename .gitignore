@@ -31,7 +31,6 @@ jspm_packages/
 .yarn-integrity
 .cache
 methods_list.txt
-cdkiampolicybuilderhelper/
 .dccache
 .yalc
 /test-reports/
