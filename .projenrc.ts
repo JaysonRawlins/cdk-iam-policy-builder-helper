@@ -363,16 +363,11 @@ releaseWorkflow.file!.addOverride('jobs.release.permissions.id-token', 'write');
 releaseWorkflow.file!.addOverride('jobs.release.permissions.contents', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_npm.permissions.id-token', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_npm.permissions.contents', 'write');
-releaseWorkflow.file!.addOverride('jobs.release_npm.steps.0.with.node-version', '24');
-releaseWorkflow.file!.addOverride('jobs.release_npm.steps.4.run', 'cd .repo && yarn install --check-files --frozen-lockfile --ignore-engines');
 releaseWorkflow.file!.addOverride('jobs.release_pypi.permissions.id-token', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_pypi.permissions.contents', 'write');
-releaseWorkflow.file!.addOverride('jobs.release_pypi.steps.0.with.node-version', workflowNodeVersion);
 releaseWorkflow.file!.addOverride('jobs.release_nuget.permissions.id-token', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_nuget.permissions.contents', 'write');
-releaseWorkflow.file!.addOverride('jobs.release_nuget.steps.0.with.node-version', workflowNodeVersion);
 releaseWorkflow.file!.addOverride('jobs.release_golang.permissions.id-token', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_golang.permissions.contents', 'write');
-releaseWorkflow.file!.addOverride('jobs.release_golang.steps.0.with.node-version', workflowNodeVersion);
 
 project.synth();
