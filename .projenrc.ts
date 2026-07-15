@@ -65,6 +65,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
   publishToGo: {
     moduleName: 'github.com/jaysonrawlins/cdk-iam-policy-builder-helper',
     packageName: 'cdkiampolicybuilderhelper',
+    // The Go module is published into this same repo, so the workflow's own
+    // token suffices — no PAT (long-lived tokens eliminated in eb4ba25).
+    githubTokenSecret: 'GITHUB_TOKEN',
   },
 
   githubOptions: {
