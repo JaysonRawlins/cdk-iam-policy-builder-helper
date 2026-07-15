@@ -5895,4 +5895,32 @@ export const ManagedPolicies = {
     PolicyName: 'AmazonS3ExpressFullAccess',
     Arn: 'arn:aws:iam::aws:policy/AmazonS3ExpressFullAccess',
   },
+  'AmazonS3FilesFullAccess': {
+    PolicyName: 'AmazonS3FilesFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3FilesFullAccess',
+  },
+  'AmazonS3FilesReadOnlyAccess': {
+    PolicyName: 'AmazonS3FilesReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3FilesReadOnlyAccess',
+  },
+  'AmazonS3FilesClientReadWriteAccess': {
+    PolicyName: 'AmazonS3FilesClientReadWriteAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3FilesClientReadWriteAccess',
+  },
+  'AmazonS3FilesClientFullAccess': {
+    PolicyName: 'AmazonS3FilesClientFullAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3FilesClientFullAccess',
+  },
+  'AmazonS3FilesClientReadOnlyAccess': {
+    PolicyName: 'AmazonS3FilesClientReadOnlyAccess',
+    Arn: 'arn:aws:iam::aws:policy/AmazonS3FilesClientReadOnlyAccess',
+  },
+  'AmazonS3FilesCSIDriverPolicy': {
+    PolicyName: 'AmazonS3FilesCSIDriverPolicy',
+    Arn: 'arn:aws:iam::aws:policy/service-role/AmazonS3FilesCSIDriverPolicy',
+  },
+  'AmazonSageMakerCapacityReservationServiceRolePolicy': {
+    PolicyName: 'AmazonSageMakerCapacityReservationServiceRolePolicy',
+    Arn: 'arn:aws:iam::aws:policy/aws-service-role/AmazonSageMakerCapacityReservationServiceRolePolicy',
+  },
 };
