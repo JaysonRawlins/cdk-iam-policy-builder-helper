@@ -100,7 +100,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   gitignore: [
     'methods_list.txt',
-    'cdkiampolicybuilderhelper/',
+    // Never ignore cdkiampolicybuilderhelper/ — the published Go module lives
+    // there on main; publib's release commit is `git rm` + copy + `git add .`,
+    // so ignoring it makes the add silently skip the copy and the release
+    // commit deletes the module.
     '.dccache',
     '.yalc',
   ],
@@ -372,5 +375,13 @@ releaseWorkflow.file!.addOverride('jobs.release_nuget.permissions.id-token', 'wr
 releaseWorkflow.file!.addOverride('jobs.release_nuget.permissions.contents', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_golang.permissions.id-token', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_golang.permissions.contents', 'write');
+// publib pushes via `https://<GITHUB_TOKEN>@github.com`; the workflow's own
+// token is an installation token, which git only accepts in the documented
+// `x-access-token:<token>` userinfo form (bare, it dies with "could not read
+// Password"). projen can only render `${{ secrets.X }}` here, so prefix the
+// value ourselves. Step 11 is the publib-golang Release step; if steps shift,
+// this lands as a harmless extra env on the wrong step and the publish fails
+// loudly on the missing-token error — it cannot corrupt the workflow.
+releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.env.GITHUB_TOKEN', 'x-access-token:${{ secrets.GITHUB_TOKEN }}');
 
 project.synth();
