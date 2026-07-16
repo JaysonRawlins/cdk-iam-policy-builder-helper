@@ -1,12 +1,12 @@
 import { awscdk, TextFile, YamlFile, DependencyType } from 'projen';
 import { Dependabot, DependabotScheduleInterval, GithubCredentials, VersioningStrategy } from 'projen/lib/github';
-import { NpmAccess } from 'projen/lib/javascript';
+import { NodePackageManager, NpmAccess } from 'projen/lib/javascript';
 
 const cdkVersion = '2.85.0';
 const minConstructsVersion = '10.0.5';
 const devConstructsVersion = '10.0.5';
 const cdkCliVersion = '2.1029.2';
-const devNodeVersion = '20.19.0';
+const devNodeVersion = '24.8.0';
 const minNodeVersion = '20.0.0';
 const workflowNodeVersion = '24.x';
 const minProjenVersion = '0.99.52';
@@ -26,6 +26,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkCliVersion: cdkCliVersion,
   projenVersion: minProjenVersion,
   projenrcTs: true,
+  packageManager: NodePackageManager.PNPM,
+  pnpmVersion: '11.13.0',
   name: '@jjrawlins/cdk-iam-policy-builder-helper',
   stability: 'stable',
 
@@ -114,22 +116,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
 });
 
 project.package.addField('resolutions', {
-  'brace-expansion': '1.1.12',
-  '@eslint/plugin-kit': '^0.3.4',
   'eslint-import-resolver-typescript': '^4.4.4',
   'aws-cdk-lib': `>=${cdkVersion} <3.0.0`,
   'constructs': devConstructsVersion,
-  // Exact-pin packages whose latest versions are inside Aikido Safe-Chain's
-  // 7-day cooldown window. Each pinned version was the latest stable as of
-  // 2026-05-14 (today minus 7 days). Bump as the cooldown clears upstream.
-  // Yarn 1 resolutions need the **/ glob to override transitive ranges, not
-  // just direct requests.
-  'projen': minProjenVersion,
-  'jsii': '5.9.40',
-  'jsii-rosetta': '5.9.45',
-  '@jsii/check-node': '1.129.0',
-  '@jsii/spec': '1.129.0',
-  'semver': '7.8.0',
+  // The Aikido-cooldown exact pins that used to live here are gone: pnpm's
+  // minimumReleaseAge (pnpm-workspace.yaml) age-gates the whole tree at
+  // resolution time, transitives included.
 });
 
 project.package.addField('engines', {
@@ -198,7 +190,11 @@ const dependabot = new Dependabot(project.github!, {
   cooldown: {
     defaultDays: 7,
     semverMinorDays: 7,
-    semverPatchDays: 3,
+    // Keep every cooldown >= the pnpm minimumReleaseAge gate (7d): Dependabot
+    // regenerates pnpm-lock.yaml with pnpm itself, which honors the committed
+    // gate — a bump younger than the gate can't even create its PR
+    // (dependabot-core#13165). With cooldown >= gate, PRs are born age-clean.
+    semverPatchDays: 7,
     include: ['*'],
   },
   groups: {
@@ -218,6 +214,35 @@ dependabot.config.updates.push({
   'schedule': { interval: 'weekly' },
   'open-pull-requests-limit': 0,
   'labels': ['dependencies', 'github-actions'],
+});
+
+new YamlFile(project, 'pnpm-workspace.yaml', {
+  obj: {
+    // 7d age gate applied at RESOLUTION time — covers transitives, which is
+    // the gap Dependabot's cooldown can't close (it ages direct deps only).
+    // Must stay <= every Dependabot cooldown above or bump PRs can't resolve.
+    minimumReleaseAge: 10080,
+    // jsii bundledDependencies require a flat node_modules; pnpm's default
+    // isolated linker hard-errors at `pnpm pack`.
+    nodeLinker: 'hoisted',
+    allowBuilds: {
+      // Transitive of eslint-import-resolver-typescript; ships prebuilt
+      // binaries, its build script is an unneeded fallback.
+      'unrs-resolver': false,
+    },
+  },
+});
+
+// Two-witness on the age gate: verify the ARTIFACT (every resolved version's
+// registry publish date), not the resolver that produced it. Catches any
+// update path — Dependabot, upgrade runs, or a human hand-editing the lock.
+const auditTask = project.addTask('audit:lockfile-age', {
+  exec: 'node .github/scripts/audit-lockfile-age.mjs pnpm-lock.yaml 168',
+  description: 'Verify every pnpm-lock.yaml entry is at least 168h old on the registry',
+});
+project.buildWorkflow?.addPostBuildSteps({
+  name: 'Audit lockfile age',
+  run: `npx projen ${auditTask.name}`,
 });
 
 new YamlFile(project, '.github/workflows/security.yml', {
@@ -379,13 +404,15 @@ releaseWorkflow.file!.addOverride('jobs.release_nuget.permissions.id-token', 'wr
 releaseWorkflow.file!.addOverride('jobs.release_nuget.permissions.contents', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_golang.permissions.id-token', 'write');
 releaseWorkflow.file!.addOverride('jobs.release_golang.permissions.contents', 'write');
-// publib pushes via `https://<GITHUB_TOKEN>@github.com`; the workflow's own
-// token is an installation token, which git only accepts in the documented
-// `x-access-token:<token>` userinfo form (bare, it dies with "could not read
-// Password"). projen can only render `${{ secrets.X }}` here, so prefix the
-// value ourselves. Step 11 is the publib-golang Release step; if steps shift,
-// this lands as a harmless extra env on the wrong step and the publish fails
-// loudly on the missing-token error — it cannot corrupt the workflow.
-releaseWorkflow.file!.addOverride('jobs.release_golang.steps.11.env.GITHUB_TOKEN', 'x-access-token:${{ secrets.GITHUB_TOKEN }}');
-
+// publib pushes via `https://<GITHUB_TOKEN>@github.com`, but the workflow's
+// installation token only authenticates in the documented
+// `x-access-token:<token>` userinfo form — bare, git dies with "could not
+// read Password". Rewrite the URL inside git itself via env-based config
+// (GIT_CONFIG_COUNT/KEY_0/VALUE_0, git >= 2.31) at the JOB level: unlike a
+// steps.<n> override, this is immune to step-index drift (#259), and unlike
+// publishToGo.prePublishSteps it doesn't clobber projen's packaging steps
+// (jsii-project.js spreads user prePublishSteps OVER the pacmak ones).
+releaseWorkflow.file!.addOverride('jobs.release_golang.env.GIT_CONFIG_COUNT', '1');
+releaseWorkflow.file!.addOverride('jobs.release_golang.env.GIT_CONFIG_KEY_0', 'url.https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/.insteadOf');
+releaseWorkflow.file!.addOverride('jobs.release_golang.env.GIT_CONFIG_VALUE_0', 'https://${{ secrets.GITHUB_TOKEN }}@github.com/');
 project.synth();
