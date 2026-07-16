@@ -107,9 +107,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
   gitignore: [
     'methods_list.txt',
     // Never ignore cdkiampolicybuilderhelper/ — the published Go module lives
-    // there on main; publib's release commit is `git rm` + copy + `git add .`,
-    // so ignoring it makes the add silently skip the copy and the release
-    // commit deletes the module.
+    // on the 'go' branch (which inherits this .gitignore); publib's release
+    // commit is `git rm` + copy + `git add .`, so ignoring it makes the add
+    // silently skip the copy and the release commit deletes the module.
     '.dccache',
     '.yalc',
   ],
