@@ -71,7 +71,7 @@ importers:
         version: 1.140.0
       jsii-docgen:
         specifier: ^10.5.0
-        version: 10.12.5(jsii-rosetta@5.9.60)
+        version: 10.12.6(jsii-rosetta@5.9.60)
       jsii-pacmak:
         specifier: ^1.127.0
         version: 1.140.0(jsii-rosetta@5.9.60)
@@ -1589,8 +1589,8 @@ packages:
     resolution: {integrity: sha512-brCNCeScma/kqa54J4PIDriSSSLssRkuYaUCpvHJulGc3HGI/xxKUCTDcYkAdqJsyb//ydpbxecjC3hB9+tb/g==}
     hasBin: true
 
-  fastq@1.20.1:
-    resolution: {integrity: sha512-GGToxJ/w1x32s/D2EKND7kTil4n8OVk/9mycTc4VDza13lOvpUZTGX3mFSCtV9ksdGBVzvsyAVLM6mHFThxXxw==}
+  fastq@1.20.3:
+    resolution: {integrity: sha512-XKv5nnLs6nLF71NgiKJLIZFLkPyIEuOselLG7ujZnGrRfQK8HpvY+WqKhAJUAdLomwVHErVS4LfxFlPq0/FTAw==}
 
   fb-watchman@2.0.2:
     resolution: {integrity: sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==}
@@ -2180,8 +2180,8 @@ packages:
     engines: {node: '>= 14.17.0'}
     hasBin: true
 
-  jsii-docgen@10.12.5:
-    resolution: {integrity: sha512-u0xKNxyaDY8Gbfs7hM761OsHr8xoRrJn+2iVCgJ6VvKTW0iDJ0bWHZdCv1ETrKAZdfE7sMy+2OoGL0+J9czgRQ==}
+  jsii-docgen@10.12.6:
+    resolution: {integrity: sha512-MShAZLUkLLO2B8UG4rm7nlLRaBY7ePdZVagl1I4d0r9qnResexL7cqJN4qEmxB7qsRZhpCY2tLhb3wlpZlH3cg==}
     hasBin: true
     peerDependencies:
       jsii-rosetta: ^1.85.0 || ~5.0.14 || ~5.1.2 || ~5.2.0 || ~5.3.0 || ~5.4.0 || ~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ~5.9.1 || ~6.0.0
@@ -3873,7 +3873,7 @@ snapshots:
   '@nodelib/fs.walk@1.2.8':
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
-      fastq: 1.20.1
+      fastq: 1.20.3
 
   '@rtsao/scc@1.1.0': {}
 
@@ -5074,7 +5074,7 @@ snapshots:
       strnum: 2.4.1
       xml-naming: 0.1.0
 
-  fastq@1.20.1:
+  fastq@1.20.3:
     dependencies:
       reusify: 1.1.0
 
@@ -5857,13 +5857,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jsii-docgen@10.12.5(jsii-rosetta@5.9.60):
+  jsii-docgen@10.12.6(jsii-rosetta@5.9.60):
     dependencies:
-      '@jsii/spec': 1.139.0
+      '@jsii/spec': 1.140.0
       case: 1.6.3
       fast-glob: 3.3.3
       fs-extra: 10.1.0
-      jsii-reflect: 1.139.0
+      jsii-reflect: 1.140.0
       jsii-rosetta: 5.9.60
       json-stream-stringify: 3.1.7
       semver: 7.8.5
