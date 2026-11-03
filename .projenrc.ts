@@ -197,9 +197,11 @@ const dependabot = new Dependabot(project.github!, {
     semverPatchDays: 7,
     include: ['*'],
   },
+  // One group, so one lockfile PR at a time. Two Dependabot PRs built on the
+  // same base merge cleanly as text yet duplicate a shared lockfile key, and
+  // no CI run ever sees that merged tree (decision 2026-11-02-one-dependabot-group-for-npm).
   groups: {
-    'aws-sdk': { patterns: ['@aws-sdk/*', '@smithy/*'] },
-    'typescript-eslint': { patterns: ['@typescript-eslint/*'] },
+    npm: { patterns: ['*'] },
   },
 });
 
@@ -253,6 +255,8 @@ project.buildWorkflow?.addPostBuildSteps({
   name: 'Audit lockfile age',
   run: `npx projen ${auditTask.name}`,
 });
+
+project.npmignore?.exclude('/docs/');
 
 new YamlFile(project, '.github/workflows/security.yml', {
   obj: {
